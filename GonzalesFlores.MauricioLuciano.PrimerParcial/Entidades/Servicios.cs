@@ -58,6 +58,14 @@ namespace Entidades
             }
             return valor;
         }
-        public abstract string Mostrar();
+        public virtual string Mostrar()
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.Append($"Indentificador: {this.Identificador} ");
+            sb.Append($"Indentificador: {this.CostoDeUso} ");
+            sb.Append($"Indentificador: {this.minutos} ");
+            sb.Append($"Indentificador: {this.activo} ");
+            return sb.ToString();
+        }
     }
 }

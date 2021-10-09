@@ -35,10 +35,18 @@ namespace Entidades
             set { base.CostoDeUso = CalcularCosto(this.tipoDeLlamada); }
             get { return base.CostoDeUso; }
         }
-        public float TipoDeLlamada
+        public string TipoDeLlamada
         {
-            set { base.CostoDeUso = CalcularCosto(this.tipoDeLlamada); }
-            get { return base.CostoDeUso; }
+            get 
+            {
+                StringBuilder sb = new StringBuilder();
+                sb.Append($"{this.tipoDeLlamada.ToString()}");
+                return sb.ToString();
+            }
+        }
+        public string NumeroLlamado
+        {
+            get{ return this.numeroLlamado; }
         }
         #endregion
 
@@ -79,9 +87,22 @@ namespace Entidades
         #endregion
 
         #region Override
+        public override string ToString()
+        {
+            StringBuilder sb = new StringBuilder();
+
+            sb.AppendLine($"Tipo de Llamado: {this.TipoDeLlamada}");
+            sb.AppendLine($"Numero Llamado:{this.NumeroLlamado}");
+
+            return sb.ToString();
+        }
         public override string Mostrar()
         {
             StringBuilder sb = new StringBuilder();
+
+            sb.Append(base.Mostrar());
+            sb.Append($"Tipo de Llamado: {this.TipoDeLlamada} ");
+            sb.Append($"Numero Llamado:{this.NumeroLlamado}");
 
             return sb.ToString();
         }

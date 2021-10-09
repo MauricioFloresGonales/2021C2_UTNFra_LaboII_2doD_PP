@@ -66,7 +66,7 @@ namespace Entidades
         {
             base.Identificador = "C";
         }
-        public Computadora(string identidicador, float costoDeUso, int minutos, bool activo, List<ESoftware> listaDeSorftwareIstalado, List<EPerifericos> listaDePerifericos, List<EJuegos> listaDeJuegos) : base(costoDeUso,minutos,activo)
+        public Computadora(string identidicador, float costoDeUso, int minutos, bool activo, List<ESoftware> listaDeSorftwareIstalado, List<EPerifericos> listaDePerifericos, List<EJuegos> listaDeJuegos) : base(costoDeUso, minutos, activo)
         {
             base.Identificador = base.AgregarCodigo("C", identidicador);
             this.listaDeSorftwareIstalado = listaDeSorftwareIstalado;
@@ -107,9 +107,39 @@ namespace Entidades
         #endregion
 
         #region Override
+        public override string ToString()
+        {
+            StringBuilder sb = new StringBuilder();
+
+            int index = 1;
+            foreach (ESoftware item in this.listaDeSorftwareIstalado)
+            {
+                sb.AppendLine("Software Instalado");
+                sb.AppendLine($"{index}: {item.ToString()}");
+                index++;
+            }
+            index = 1;
+            foreach (ESoftware item in this.listaDePerifericos)
+            {
+                sb.AppendLine("Lista De Perifericos");
+                sb.AppendLine($"{index}: {item.ToString()}");
+                index++;
+            }
+            index = 1;
+            foreach (ESoftware item in this.listaDeJuegos)
+            {
+                sb.AppendLine("Lista De Juegos");
+                sb.AppendLine($"{index}: {item.ToString()}");
+                index++;
+            }
+            return sb.ToString();
+        }
         public override string Mostrar()
         {
             StringBuilder sb = new StringBuilder();
+
+            sb.Append(base.Mostrar());
+            sb.Append(this.ToString());
 
             return sb.ToString();
         }
