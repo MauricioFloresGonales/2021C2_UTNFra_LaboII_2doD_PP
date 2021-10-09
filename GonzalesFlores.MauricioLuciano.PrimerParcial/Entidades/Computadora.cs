@@ -23,7 +23,7 @@ namespace Entidades
         auriculares,
         microfono
     }
-    public class Computadora:Servicios
+    public class Computadora : Servicios
     {
         List<ESoftware> listaDeSorftwareIstalado;
         List<EPerifericos> listaDePerifericos;
@@ -61,6 +61,18 @@ namespace Entidades
         #endregion
 
         #region Constructores
+
+        public Computadora() : base()
+        {
+            base.Identificador = "C";
+        }
+        public Computadora(string identidicador, float costoDeUso, int minutos, bool activo, List<ESoftware> listaDeSorftwareIstalado, List<EPerifericos> listaDePerifericos, List<EJuegos> listaDeJuegos) : base(costoDeUso,minutos,activo)
+        {
+            base.Identificador = base.AgregarCodigo("C", identidicador);
+            this.listaDeSorftwareIstalado = listaDeSorftwareIstalado;
+            this.listaDePerifericos = listaDePerifericos;
+            this.listaDeJuegos = listaDeJuegos;
+        }
 
         #endregion
 

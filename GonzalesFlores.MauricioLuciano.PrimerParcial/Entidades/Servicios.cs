@@ -23,6 +23,28 @@ namespace Entidades
             set { this.costoDeUso = value; }
             get { return this.costoDeUso; }
         }
+
+        public Servicios()
+        {
+            this.identificador = " ";
+            this.costoDeUso = 0;
+            this.minutos = 0;
+            this.activo = false;
+        }
+        public Servicios(float costoDeUso, int minutos, bool activo) : base()
+        {
+            this.costoDeUso = costoDeUso;
+            this.minutos = minutos;
+            this.activo = activo;
+        }
+        public string AgregarCodigo(string identificador, string numero)
+        {
+            if (int.Parse(numero) > 9)
+            {
+                return string.Concat(identificador, this.Identificador, "0", numero);
+            }
+            return string.Concat(this.Identificador, numero);
+        }
         public abstract bool ValidarIdentificador(string code);
         public float Costo(int minutos, string valorInicial)
         {

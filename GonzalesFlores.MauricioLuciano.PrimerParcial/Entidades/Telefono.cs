@@ -14,7 +14,7 @@ namespace Entidades
     public class Telefono: Servicios
     {
         ETipo tipoDeLlamada;
-        public string numero;
+        public string numeroLlamado;
 
 
         #region Propiedades
@@ -43,7 +43,16 @@ namespace Entidades
         #endregion
 
         #region Constructores
-        //crear costructores
+        public Telefono() : base()
+        {
+            base.Identificador = "T";
+        }
+        public Telefono(string identidicador, float costoDeUso, int minutos, bool activo, ETipo tipoDeLlamada, string numeroLlamado) : base(costoDeUso, minutos, activo)
+        {
+            base.Identificador = base.AgregarCodigo("T", identidicador);
+            this.tipoDeLlamada = tipoDeLlamada;
+            this.numeroLlamado = numeroLlamado;
+        }
         #endregion
 
         #region Metodos
