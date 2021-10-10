@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace Entidades
 {
-    enum ETipo
+    public enum ETipo
     {
         aDisco,
         conTeclado
     }
-    enum EMarca
+    public enum EMarca
     {
         nokia,
         telefonica,
@@ -86,9 +86,11 @@ namespace Entidades
         {
             base.Identificador = "T";
         }
-        public Telefono(string identidicador, float costoDeUso, int minutos, bool activo, ETipoLlamada tipoDeLlamada, string numeroLlamado) : base(costoDeUso, minutos, activo)
+        public Telefono(string identidicador, float costoDeUso, int minutos, bool activo, ETipo tipo, EMarca marca, ETipoLlamada tipoDeLlamada, string numeroLlamado) : base(costoDeUso, minutos, activo)
         {
             base.Identificador = base.AgregarCodigo("T", identidicador);
+            this.tipo = tipo;
+            this.marca = marca;
             this.tipoDeLlamada = tipoDeLlamada;
             this.numeroLlamado = numeroLlamado;
         }
