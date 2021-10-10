@@ -19,15 +19,19 @@ namespace Entidades
     }
     public enum EJuegos
     {
-        camara,
-        auriculares,
-        microfono
+        CounterStrike,
+        DiabloII,
+        MuOnline,
+        LineageII,
+        WarcraftIII,
+        AgeOfEmpiresII
     }
     public class Computadora : Servicios
     {
         List<ESoftware> listaDeSorftwareIstalado;
         List<EPerifericos> listaDePerifericos;
         List<EJuegos> listaDeJuegos;
+        Hardware maquina;
 
         #region Propiedades
         public override string Identificador
@@ -58,6 +62,10 @@ namespace Entidades
         {
             get { return MostrarLista(this.listaDeJuegos); }
         }
+        public string Maquina
+        {
+            get { return this.maquina.MostrarCaracteristicas(); }
+        }
         #endregion
 
         #region Constructores
@@ -66,12 +74,13 @@ namespace Entidades
         {
             base.Identificador = "C";
         }
-        public Computadora(string identidicador, float costoDeUso, int minutos, bool activo, List<ESoftware> listaDeSorftwareIstalado, List<EPerifericos> listaDePerifericos, List<EJuegos> listaDeJuegos) : base(costoDeUso, minutos, activo)
+        public Computadora(string identidicador, float costoDeUso, int minutos, bool activo, List<ESoftware> listaDeSorftwareIstalado, List<EPerifericos> listaDePerifericos, List<EJuegos> listaDeJuegos, Hardware maquina) : base(costoDeUso, minutos, activo)
         {
             base.Identificador = base.AgregarCodigo("C", identidicador);
             this.listaDeSorftwareIstalado = listaDeSorftwareIstalado;
             this.listaDePerifericos = listaDePerifericos;
             this.listaDeJuegos = listaDeJuegos;
+            this.maquina = maquina;
         }
 
         #endregion
@@ -132,6 +141,9 @@ namespace Entidades
                 sb.AppendLine($"{index}: {item.ToString()}");
                 index++;
             }
+            sb.AppendLine("Hardware");
+            sb.AppendLine(this.Maquina);
+
             return sb.ToString();
         }
         public override string Mostrar()
