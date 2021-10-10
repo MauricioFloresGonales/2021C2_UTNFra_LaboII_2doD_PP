@@ -6,14 +6,27 @@ using System.Threading.Tasks;
 
 namespace Entidades
 {
-    public enum ETipo {
+    enum ETipo
+    {
+        aDisco,
+        conTeclado
+    }
+    enum EMarca
+    {
+        nokia,
+        telefonica,
+        samsung,
+    }
+    public enum ETipoLlamada {
         loca,
         largaDistancia,
         Internacional
     }
     public class Telefono: Servicios
     {
-        ETipo tipoDeLlamada;
+        ETipo tipo;
+        EMarca marca;
+        ETipoLlamada tipoDeLlamada;
         public string numeroLlamado;
 
 
@@ -37,10 +50,28 @@ namespace Entidades
         }
         public string TipoDeLlamada
         {
-            get 
+            get
             {
                 StringBuilder sb = new StringBuilder();
                 sb.Append($"{this.tipoDeLlamada.ToString()}");
+                return sb.ToString();
+            }
+        }
+        public string Tipo
+        {
+            get
+            {
+                StringBuilder sb = new StringBuilder();
+                sb.Append($"{this.tipo.ToString()}");
+                return sb.ToString();
+            }
+        }
+        public string Marca
+        {
+            get 
+            {
+                StringBuilder sb = new StringBuilder();
+                sb.Append($"{this.marca.ToString()}");
                 return sb.ToString();
             }
         }
@@ -55,7 +86,7 @@ namespace Entidades
         {
             base.Identificador = "T";
         }
-        public Telefono(string identidicador, float costoDeUso, int minutos, bool activo, ETipo tipoDeLlamada, string numeroLlamado) : base(costoDeUso, minutos, activo)
+        public Telefono(string identidicador, float costoDeUso, int minutos, bool activo, ETipoLlamada tipoDeLlamada, string numeroLlamado) : base(costoDeUso, minutos, activo)
         {
             base.Identificador = base.AgregarCodigo("T", identidicador);
             this.tipoDeLlamada = tipoDeLlamada;
@@ -64,15 +95,15 @@ namespace Entidades
         #endregion
 
         #region Metodos
-        private float CalcularCosto(ETipo tipo)
+        private float CalcularCosto(ETipoLlamada tipo)
         {
             switch (tipo)
             {
-                case ETipo.loca:
+                case ETipoLlamada.loca:
                     return Costo(base.minutos, "1");
-                case ETipo.largaDistancia:
+                case ETipoLlamada.largaDistancia:
                     return Costo(base.minutos, "2,5");
-                case ETipo.Internacional:
+                case ETipoLlamada.Internacional:
                     return Costo(base.minutos, "5");
                 default:
                     return 0;
