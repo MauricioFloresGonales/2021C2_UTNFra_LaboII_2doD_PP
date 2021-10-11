@@ -42,6 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Computadora.cs" />
+    <Compile Include="Hardware.cs" />
     <Compile Include="Local.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Servicios.cs" />
