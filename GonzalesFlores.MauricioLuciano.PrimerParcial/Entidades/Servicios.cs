@@ -13,6 +13,7 @@ namespace Entidades
         public int minutos;
         public bool activo;
 
+        #region Propiedades
         public virtual string Identificador
         {
             set { this.identificador = value; }
@@ -23,7 +24,9 @@ namespace Entidades
             set { this.costoDeUso = value; }
             get { return this.costoDeUso; }
         }
+        #endregion
 
+        #region Constructores
         public Servicios()
         {
             this.identificador = " ";
@@ -37,6 +40,9 @@ namespace Entidades
             this.minutos = minutos;
             this.activo = activo;
         }
+        #endregion
+
+        #region Metodos
         public string AgregarCodigo(string identificador, string numero)
         {
             if (int.Parse(numero) > 9)
@@ -67,5 +73,35 @@ namespace Entidades
             sb.Append($"Indentificador: {this.activo} ");
             return sb.ToString();
         }
+        #endregion
+
+        #region Sobrecargas
+        public static bool operator ==(Servicios s1, Servicios s2)
+        {
+            if (s1.Identificador == s2.Identificador)
+            {
+                return true;
+            }
+            return false;
+        }
+        public static bool operator !=(Servicios s1, Servicios s2)
+        {
+            return (s1 == s2);
+        }
+        public override bool Equals(object obj)
+        {
+            return obj is Servicios servicios &&
+                   Identificador == servicios.Identificador &&
+                   CostoDeUso == servicios.CostoDeUso;
+        }
+
+        public override int GetHashCode()
+        {
+            int hashCode = -1922181091;
+            hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(Identificador);
+            hashCode = hashCode * -1521134295 + CostoDeUso.GetHashCode();
+            return hashCode;
+        }
+        #endregion
     }
 }
