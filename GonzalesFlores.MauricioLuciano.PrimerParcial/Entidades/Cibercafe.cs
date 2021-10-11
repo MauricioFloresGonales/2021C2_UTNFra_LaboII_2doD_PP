@@ -10,6 +10,7 @@ namespace Entidades
     {
         static List<Computadora> listaDeComputadoras;
         static List<Telefono> listaDeTelefonos;
+        static Queue<Cliente> filaDeClientes;
 
 
         public static List<Computadora> ListaDeComputadoras
@@ -19,6 +20,10 @@ namespace Entidades
         public static List<Telefono> ListaDeTelefonos
         {
             get { return listaDeTelefonos; }
+        }
+        public static Queue<Cliente> FilaDeClientes
+        {
+            get { return filaDeClientes; }
         }
 
         #region Constructores
@@ -86,33 +91,93 @@ namespace Entidades
             Computadora pc9 = new Computadora("9", 1, 1, false, soft1, peri1, juegos1, hw1);
             Computadora pc10 = new Computadora("10", 1, 1, false, soft1, peri1, juegos1, hw1);
 
+            AgregarALista(pc1);
+            AgregarALista(pc2);
+            AgregarALista(pc3);
+            AgregarALista(pc4);
+            AgregarALista(pc5);
+            AgregarALista(pc6);
+            AgregarALista(pc7);
+            AgregarALista(pc8);
+            AgregarALista(pc9);
+            AgregarALista(pc10);
+
             Telefono tel1 = new Telefono("1", 1, 1, false, ETipo.aDisco, EMarca.telefonica, ETipoLlamada.Internacional, "1");
             Telefono tel2 = new Telefono("2", 1, 1, false, ETipo.aDisco, EMarca.nokia, ETipoLlamada.largaDistancia, "1");
             Telefono tel3 = new Telefono("3", 1, 1, false, ETipo.conTeclado, EMarca.samsung, ETipoLlamada.local, "1");
             Telefono tel4 = new Telefono("4", 1, 1, false, ETipo.conTeclado, EMarca.nokia, ETipoLlamada.local, "1");
             Telefono tel5 = new Telefono("5", 1, 1, false, ETipo.conTeclado, EMarca.telefonica, ETipoLlamada.Internacional, "1");
 
-            AgregarAFila(pc1);
-            AgregarAFila(pc2);
-            AgregarAFila(pc3);
-            AgregarAFila(pc4);
-            AgregarAFila(pc5);
-            AgregarAFila(pc6);
-            AgregarAFila(pc7);
-            AgregarAFila(pc8);
-            AgregarAFila(pc9);
-            AgregarAFila(pc10);
+            AgregarALista(tel1);
+            AgregarALista(tel2);
+            AgregarALista(tel3);
+            AgregarALista(tel4);
+            AgregarALista(tel5);
 
-            AgregarAFila(tel1);
-            AgregarAFila(tel2);
-            AgregarAFila(tel3);
-            AgregarAFila(tel4);
-            AgregarAFila(tel5);
+            Cliente cl1 = new Cliente("Uno", "Telefono", 30);
+            Cliente cl2 = new Cliente("Dos", "Telefono", 30);
+            Cliente cl3 = new Cliente("Tres", "Telefono", 30);
+            Cliente cl4 = new Cliente("Cuatro", "Computadora", 30);
+            Cliente cl5 = new Cliente("Cinco", "Computadora", 30);
+            Cliente cl6 = new Cliente("Seis", "Computadora", 30);
+            Cliente cl7 = new Cliente("Siete", "Computadora", 30);
+
+            AgregarALista(cl1);
+            AgregarALista(cl2);
+            AgregarALista(cl3);
+            AgregarALista(cl4);
+            AgregarALista(cl5);
+            AgregarALista(cl6);
+            AgregarALista(cl7);
+        }
+        #endregion
+
+        #region Clientes
+        public static void AgregarALista(Cliente cl)
+        {
+            try
+            {
+                if (filaDeClientes == null)
+                {
+                    filaDeClientes.Enqueue(cl);
+                }
+                foreach (Computadora item in listaDeComputadoras)
+                {
+                    filaDeClientes.Enqueue(cl);
+                }
+            }
+            catch (Exception err)
+            {
+                throw err;
+            }
+        }
+        public static Cliente RetirarCliente(Cliente cl)
+        {
+            try
+            {
+                if (filaDeClientes != null)
+                {
+                    foreach (Cliente item in filaDeClientes)
+                    {
+                        if (item == cl)
+                        {
+
+                            return filaDeClientes.Dequeue();
+                        }
+                    }
+                    throw new Exception("El cliente que se quiere retirar de la fila no esta en la fila.");
+                }
+                throw new Exception("La fila de clientes esta vacia.");
+            }
+            catch (Exception err)
+            {
+                throw err;
+            }
         }
         #endregion
 
         #region Metodos Computadora
-        public static void AgregarAFila( Computadora pc)
+        public static void AgregarALista( Computadora pc)
         {
             try
             {
@@ -122,7 +187,7 @@ namespace Entidades
                 }
                 foreach (Computadora item in listaDeComputadoras)
                 {
-                    if (item == pc)
+                    if (item != pc)
                     {
                         listaDeComputadoras.Add(pc);
                     }
@@ -133,7 +198,7 @@ namespace Entidades
                 throw err;
             }
         }
-        public static bool RetirarDeLaFilaPC(Computadora pc)
+        public static bool RetirarDeLaListaPC(Computadora pc)
         {
             try
             {
@@ -149,17 +214,35 @@ namespace Entidades
                     }
                     throw new Exception("La pc que se quiere eliminar no esta en la lista.");
                 }
-                throw new Exception("La fila de pc's esta vacia.");
+                throw new Exception("La lista de pc's esta vacia.");
             }
             catch (Exception err)
             {
                 throw err;
             }
         }
+        public static void ComputadoraAUsar(Cliente cl)
+        {
+            foreach (Computadora item in listaDeComputadoras)
+            {
+                if (item.activo == false)
+                {
+                    item.activo = true;
+                    item.minutos = cl.Minutos;
+                }
+            }
+        }
+        public static void ElejirServicio(Cliente cl)
+        {
+            if (cl.Servicio == "Computadora")
+            {
+                ComputadoraAUsar(cl);
+            }
+        }
         #endregion
 
         #region Metodos Telefonos
-        public static void AgregarAFila(Telefono tel)
+        public static void AgregarALista(Telefono tel)
         {
             try
             {
@@ -170,7 +253,7 @@ namespace Entidades
                 }
                 foreach (Telefono item in listaDeTelefonos)
                 {
-                    if (item == tel)
+                    if (item != tel)
                     {
 
                         listaDeTelefonos.Add(tel);
@@ -182,7 +265,7 @@ namespace Entidades
                 throw err;
             }
         }
-        public static bool RetirarDeLaFilaTel(Telefono tel)
+        public static bool RetirarDeLaListaTel(Telefono tel)
         {
             try
             {
@@ -198,7 +281,7 @@ namespace Entidades
                     }
                     throw new Exception("El telefono que se quiere eliminar no esta en la lista.");
                 }
-                throw new Exception("La fila de Telefonos esta vacia.");
+                throw new Exception("La lista de Telefonos esta vacia.");
             }
             catch (Exception err)
             {
