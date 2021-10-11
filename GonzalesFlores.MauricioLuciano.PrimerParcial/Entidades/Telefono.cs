@@ -18,7 +18,7 @@ namespace Entidades
         samsung,
     }
     public enum ETipoLlamada {
-        loca,
+        local,
         largaDistancia,
         Internacional
     }
@@ -101,7 +101,7 @@ namespace Entidades
         {
             switch (tipo)
             {
-                case ETipoLlamada.loca:
+                case ETipoLlamada.local:
                     return Costo(base.minutos, "1");
                 case ETipoLlamada.largaDistancia:
                     return Costo(base.minutos, "2,5");

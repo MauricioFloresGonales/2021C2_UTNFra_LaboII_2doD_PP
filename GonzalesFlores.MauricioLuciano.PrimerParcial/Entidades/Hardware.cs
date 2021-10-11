@@ -60,9 +60,9 @@ namespace Entidades
         public string  MostrarCaracteristicas()
         {
             StringBuilder sb = new StringBuilder();
-            sb.AppendLine($"{this.Procesador}");
-            sb.AppendLine($"{this.Ram}");
-            sb.AppendLine($"{this.PlacaGrafica}");
+            sb.Append($"{this.Procesador} ");
+            sb.Append($"- {this.Ram} ");
+            sb.Append($"- {this.PlacaGrafica}");
             return sb.ToString();
         }
         #endregion

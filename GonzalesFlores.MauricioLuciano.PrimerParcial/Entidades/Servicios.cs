@@ -45,11 +45,11 @@ namespace Entidades
         #region Metodos
         public string AgregarCodigo(string identificador, string numero)
         {
-            if (int.Parse(numero) > 9)
+            if (int.Parse(numero) < 10)
             {
                 return string.Concat(identificador, this.Identificador, "0", numero);
             }
-            return string.Concat(this.Identificador, numero);
+            return string.Concat(identificador,this.Identificador, numero);
         }
         public abstract bool ValidarIdentificador(string code);
         public float Costo(int minutos, string valorInicial)
@@ -78,15 +78,22 @@ namespace Entidades
         #region Sobrecargas
         public static bool operator ==(Servicios s1, Servicios s2)
         {
-            if (s1.Identificador == s2.Identificador)
+            if (s1 == null || s2 == null)
             {
-                return true;
+                return false;
+            }
+            else
+            {
+                if (s1.Identificador == s2.Identificador)
+                {
+                    return true;
+                }
             }
             return false;
         }
         public static bool operator !=(Servicios s1, Servicios s2)
         {
-            return (s1 == s2);
+            return !(s1 == s2);
         }
         public override bool Equals(object obj)
         {
