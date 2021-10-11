@@ -74,7 +74,7 @@ namespace Entidades
         {
             base.Identificador = "C";
         }
-        public Computadora(string identidicador, float costoDeUso, int minutos, bool activo, List<ESoftware> listaDeSorftwareIstalado, List<EPerifericos> listaDePerifericos, List<EJuegos> listaDeJuegos, Hardware maquina) : base(costoDeUso, minutos, activo)
+        public Computadora(string identidicador,bool activo, List<ESoftware> listaDeSorftwareIstalado, List<EPerifericos> listaDePerifericos, List<EJuegos> listaDeJuegos, Hardware maquina) : base(activo)
         {
             base.Identificador = base.AgregarCodigo("C", identidicador);
             this.listaDeSorftwareIstalado = listaDeSorftwareIstalado;

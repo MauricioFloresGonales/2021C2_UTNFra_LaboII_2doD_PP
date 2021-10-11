@@ -34,10 +34,8 @@ namespace Entidades
             this.minutos = 0;
             this.activo = false;
         }
-        public Servicios(float costoDeUso, int minutos, bool activo) : base()
+        public Servicios(bool activo) : base()
         {
-            this.costoDeUso = costoDeUso;
-            this.minutos = minutos;
             this.activo = activo;
         }
         #endregion

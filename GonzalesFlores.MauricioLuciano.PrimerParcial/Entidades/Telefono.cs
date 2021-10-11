@@ -86,7 +86,7 @@ namespace Entidades
         {
             base.Identificador = "T";
         }
-        public Telefono(string identidicador, float costoDeUso, int minutos, bool activo, ETipo tipo, EMarca marca, ETipoLlamada tipoDeLlamada, string numeroLlamado) : base(costoDeUso, minutos, activo)
+        public Telefono(string identidicador, bool activo, ETipo tipo, EMarca marca, ETipoLlamada tipoDeLlamada, string numeroLlamado) : base(activo)
         {
             base.Identificador = base.AgregarCodigo("T", identidicador);
             this.tipo = tipo;
