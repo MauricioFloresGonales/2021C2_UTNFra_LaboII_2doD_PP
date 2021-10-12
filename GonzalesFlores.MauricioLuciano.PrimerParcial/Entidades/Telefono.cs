@@ -22,12 +22,11 @@ namespace Entidades
         largaDistancia,
         Internacional
     }
-    public class Telefono: Servicios
+    public class Telefono : Servicios
     {
         ETipo tipo;
         EMarca marca;
         ETipoLlamada tipoDeLlamada;
-        public string numeroLlamado;
 
 
         #region Propiedades
@@ -48,7 +47,11 @@ namespace Entidades
             set { base.CostoDeUso = CalcularCosto(this.tipoDeLlamada); }
             get { return base.CostoDeUso; }
         }
-        public string TipoDeLlamada
+        public ETipoLlamada TipoDeLlamadaSet
+        {
+            set { this.tipoDeLlamada = value; }
+        }
+        public string TipoDeLlamadaGet
         {
             get
             {
@@ -68,16 +71,12 @@ namespace Entidades
         }
         public string Marca
         {
-            get 
+            get
             {
                 StringBuilder sb = new StringBuilder();
                 sb.Append($"{this.marca.ToString()}");
                 return sb.ToString();
             }
-        }
-        public string NumeroLlamado
-        {
-            get{ return this.numeroLlamado; }
         }
         #endregion
 
@@ -86,13 +85,11 @@ namespace Entidades
         {
             base.Identificador = "T";
         }
-        public Telefono(string identidicador, bool activo, ETipo tipo, EMarca marca, ETipoLlamada tipoDeLlamada, string numeroLlamado) : base(activo)
+        public Telefono(string identidicador, bool activo, ETipo tipo, EMarca marca) : base(activo)
         {
             base.Identificador = base.AgregarCodigo("T", identidicador);
             this.tipo = tipo;
             this.marca = marca;
-            this.tipoDeLlamada = tipoDeLlamada;
-            this.numeroLlamado = numeroLlamado;
         }
         #endregion
 
@@ -116,6 +113,18 @@ namespace Entidades
             StringBuilder sb = new StringBuilder();
             sb.Append($"{this.tipoDeLlamada.ToString()} ");
             return sb.ToString();
+        }
+        private string LlamarA(string numero)
+        {
+            switch (this.TipoDeLlamada)
+            {
+                case "largaDistancia":
+                    return string.Concat("+54 9 11 ", numero);
+                case "Internacional":
+                    return string.Concat("0609 ", numero);
+                default:
+                    return string.Concat("011 ", numero);
+            }
         }
         #endregion
 

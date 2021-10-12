@@ -80,16 +80,16 @@ namespace Entidades
             juegos3.Add(EJuegos.DiabloII);
             juegos3.Add(EJuegos.CounterStrike);
 
-            Computadora pc1 = new Computadora("1", 1, 1, false, soft1, peri1, juegos1, hw1);
-            Computadora pc2 = new Computadora("2", 1, 1, false, soft1, peri1, juegos1, hw1);
-            Computadora pc3 = new Computadora("3", 1, 1, false, soft1, peri1, juegos1, hw1);
-            Computadora pc4 = new Computadora("4", 1, 1, false, soft1, peri1, juegos1, hw1);
-            Computadora pc5 = new Computadora("5", 1, 1, false, soft1, peri1, juegos1, hw1);
-            Computadora pc6 = new Computadora("6", 1, 1, false, soft1, peri1, juegos1, hw1);
-            Computadora pc7 = new Computadora("7", 1, 1, false, soft1, peri1, juegos1, hw1);
-            Computadora pc8 = new Computadora("8", 1, 1, false, soft1, peri1, juegos1, hw1);
-            Computadora pc9 = new Computadora("9", 1, 1, false, soft1, peri1, juegos1, hw1);
-            Computadora pc10 = new Computadora("10", 1, 1, false, soft1, peri1, juegos1, hw1);
+            Computadora pc1 = new Computadora("1", false, soft1, peri1, juegos1, hw1);
+            Computadora pc2 = new Computadora("2", false, soft1, peri1, juegos1, hw1);
+            Computadora pc3 = new Computadora("3", false, soft1, peri1, juegos1, hw1);
+            Computadora pc4 = new Computadora("4", false, soft1, peri1, juegos1, hw1);
+            Computadora pc5 = new Computadora("5", false, soft1, peri1, juegos1, hw1);
+            Computadora pc6 = new Computadora("6", false, soft1, peri1, juegos1, hw1);
+            Computadora pc7 = new Computadora("7", false, soft1, peri1, juegos1, hw1);
+            Computadora pc8 = new Computadora("8", false, soft1, peri1, juegos1, hw1);
+            Computadora pc9 = new Computadora("9", false, soft1, peri1, juegos1, hw1);
+            Computadora pc10 = new Computadora("10", false, soft1, peri1, juegos1, hw1);
 
             AgregarALista(pc1);
             AgregarALista(pc2);
@@ -102,11 +102,11 @@ namespace Entidades
             AgregarALista(pc9);
             AgregarALista(pc10);
 
-            Telefono tel1 = new Telefono("1", 1, 1, false, ETipo.aDisco, EMarca.telefonica, ETipoLlamada.Internacional, "1");
-            Telefono tel2 = new Telefono("2", 1, 1, false, ETipo.aDisco, EMarca.nokia, ETipoLlamada.largaDistancia, "1");
-            Telefono tel3 = new Telefono("3", 1, 1, false, ETipo.conTeclado, EMarca.samsung, ETipoLlamada.local, "1");
-            Telefono tel4 = new Telefono("4", 1, 1, false, ETipo.conTeclado, EMarca.nokia, ETipoLlamada.local, "1");
-            Telefono tel5 = new Telefono("5", 1, 1, false, ETipo.conTeclado, EMarca.telefonica, ETipoLlamada.Internacional, "1");
+            Telefono tel1 = new Telefono("1", false, ETipo.aDisco, EMarca.telefonica);
+            Telefono tel2 = new Telefono("2", false, ETipo.aDisco, EMarca.nokia);
+            Telefono tel3 = new Telefono("3", false, ETipo.conTeclado, EMarca.samsung);
+            Telefono tel4 = new Telefono("4", false, ETipo.conTeclado, EMarca.nokia);
+            Telefono tel5 = new Telefono("5", false, ETipo.conTeclado, EMarca.telefonica);
 
             AgregarALista(tel1);
             AgregarALista(tel2);
@@ -114,9 +114,9 @@ namespace Entidades
             AgregarALista(tel4);
             AgregarALista(tel5);
 
-            Cliente cl1 = new Cliente("Uno", "Telefono", 30);
-            Cliente cl2 = new Cliente("Dos", "Telefono", 30);
-            Cliente cl3 = new Cliente("Tres", "Telefono", 30);
+            Cliente cl1 = new Cliente("Uno", "Telefono", 30, "123", ETipoLlamada.Internacional);
+            Cliente cl2 = new Cliente("Dos", "Telefono", 30, "345", ETipoLlamada.largaDistancia);
+            Cliente cl3 = new Cliente("Tres", "Telefono", 60, "567", ETipoLlamada.local);
             Cliente cl4 = new Cliente("Cuatro", "Computadora", 30);
             Cliente cl5 = new Cliente("Cinco", "Computadora", 30);
             Cliente cl6 = new Cliente("Seis", "Computadora", 30);
@@ -232,11 +232,15 @@ namespace Entidades
                 }
             }
         }
-        public static void ElejirServicio(Cliente cl)
+        public static void ComputadoraLiberar(Computadora pc)
         {
-            if (cl.Servicio == "Computadora")
+            foreach (Computadora item in listaDeComputadoras)
             {
-                ComputadoraAUsar(cl);
+                if (item.Identificador == pc.Identificador)
+                {
+                    item.activo = false;
+                    item.minutos = 0;
+                }
             }
         }
         #endregion
@@ -286,6 +290,45 @@ namespace Entidades
             catch (Exception err)
             {
                 throw err;
+            }
+        }
+        public static Telefono TelefonoAUsar(Cliente cl)
+        {
+            foreach (Telefono item in listaDeTelefonos)
+            {
+                if (item.activo == false)
+                {
+                    item.activo = true;
+                    item.minutos = cl.Minutos;
+                    item.TipoDeLlamadaSet = cl.TipoDeLlamada;
+                    return item;
+                }
+            }
+            throw new Exception("No hay un telefono disponible");
+        }
+        public static void TelefonoALiberar(Telefono tel)
+        {
+            foreach (Telefono item in listaDeTelefonos)
+            {
+                if (tel.Identificador == tel.Identificador)
+                {
+                    tel.activo = false;
+                    tel.minutos = 0;
+                }
+            }
+        }
+        #endregion
+
+        #region Cliente
+        public static void ElejirServicio(Cliente cl)
+        {
+            if (cl.Servicio == "Computadora")
+            {
+                ComputadoraAUsar(cl);
+            }
+            if (cl.Servicio == "Telefono")
+            {
+                TelefonoAUsar(cl);
             }
         }
         #endregion
