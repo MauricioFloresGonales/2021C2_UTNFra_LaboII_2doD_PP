@@ -76,7 +76,7 @@ namespace Entidades
         #region Sobrecargas
         public static bool operator ==(Servicios s1, Servicios s2)
         {
-            if (s1 == null || s2 == null)
+            if (object.ReferenceEquals(s1, null) || object.ReferenceEquals(s2, null))
             {
                 return false;
             }

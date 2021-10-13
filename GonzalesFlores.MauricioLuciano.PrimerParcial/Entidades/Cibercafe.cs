@@ -31,6 +31,7 @@ namespace Entidades
         {
             listaDeComputadoras = new List<Computadora>();
             listaDeTelefonos = new List<Telefono>();
+            filaDeClientes = new Queue<Cliente>();
         }
         #endregion
 
@@ -137,21 +138,14 @@ namespace Entidades
         {
             try
             {
-                if (filaDeClientes == null)
-                {
-                    filaDeClientes.Enqueue(cl);
-                }
-                foreach (Computadora item in listaDeComputadoras)
-                {
-                    filaDeClientes.Enqueue(cl);
-                }
+                filaDeClientes.Enqueue(cl);
             }
             catch (Exception err)
             {
                 throw err;
             }
         }
-        public static Cliente RetirarCliente(Cliente cl)
+        public static Cliente RetirarCliente()
         {
             try
             {
@@ -159,11 +153,7 @@ namespace Entidades
                 {
                     foreach (Cliente item in filaDeClientes)
                     {
-                        if (item == cl)
-                        {
-
-                            return filaDeClientes.Dequeue();
-                        }
+                        return filaDeClientes.Dequeue();
                     }
                     throw new Exception("El cliente que se quiere retirar de la fila no esta en la fila.");
                 }
@@ -174,6 +164,17 @@ namespace Entidades
                 throw err;
             }
         }
+        public static void ElejirServicio(Cliente cl)
+        {
+            if (cl.Servicio == "Computadora")
+            {
+                //ComputadoraAUsar(cl);
+            }
+            if (cl.Servicio == "Telefono")
+            {
+                TelefonoAUsar(cl);
+            }
+        }
         #endregion
 
         #region Metodos Computadora
@@ -181,38 +182,38 @@ namespace Entidades
         {
             try
             {
-                if (listaDeComputadoras == null)
+                if (listaDeComputadoras.Count == 0)
                 {
                     listaDeComputadoras.Add(pc);
-                }
-                foreach (Computadora item in listaDeComputadoras)
+                } else
                 {
-                    if (item != pc)
+                    foreach (Computadora item in listaDeComputadoras)
                     {
-                        listaDeComputadoras.Add(pc);
+                        if (item == pc)
+                        {
+                            throw new Exception("La computadora ya existe");
+                        }
                     }
+                    listaDeComputadoras.Add(pc);
                 }
+                
             }
             catch (Exception err)
             {
                 throw err;
             }
         }
-        public static bool RetirarDeLaListaPC(Computadora pc)
+        public static Computadora RecibirPC(int index)
         {
             try
             {
-                if (listaDeComputadoras != null)
+                if (listaDeComputadoras.Count >= 1)
                 {
-                    foreach (Computadora item in listaDeComputadoras)
+                    if (listaDeComputadoras.Count >= index)
                     {
-                        if (item == pc)
-                        {
-
-                            return listaDeComputadoras.Remove(pc);
-                        }
+                        return listaDeComputadoras[index];
                     }
-                    throw new Exception("La pc que se quiere eliminar no esta en la lista.");
+                    throw new Exception("La pc que se requiere no esta en la lista.");
                 }
                 throw new Exception("La lista de pc's esta vacia.");
             }
@@ -221,14 +222,14 @@ namespace Entidades
                 throw err;
             }
         }
-        public static void ComputadoraAUsar(Cliente cl)
+        public static void ComputadoraAUsar(int index, int minutos)
         {
             foreach (Computadora item in listaDeComputadoras)
             {
-                if (item.activo == false)
+                if (item == RecibirPC(index))
                 {
                     item.activo = true;
-                    item.minutos = cl.Minutos;
+                    item.minutos = minutos;
                 }
             }
         }
@@ -250,19 +251,22 @@ namespace Entidades
         {
             try
             {
-                if (listaDeTelefonos == null)
+                if (listaDeTelefonos.Count == 0)
                 {
 
                     listaDeTelefonos.Add(tel);
-                }
-                foreach (Telefono item in listaDeTelefonos)
+                } else
                 {
-                    if (item != tel)
+                    foreach (Telefono item in listaDeTelefonos)
                     {
-
-                        listaDeTelefonos.Add(tel);
+                        if (item == tel)
+                        {
+                            throw new Exception("La computadora ya existe");
+                        }
                     }
+                    listaDeTelefonos.Add(tel);
                 }
+                
             }
             catch (Exception err)
             {
@@ -273,7 +277,7 @@ namespace Entidades
         {
             try
             {
-                if (listaDeTelefonos != null)
+                if (listaDeTelefonos.Count >= 1)
                 {
                     foreach (Telefono item in listaDeTelefonos)
                     {
@@ -315,20 +319,6 @@ namespace Entidades
                     tel.activo = false;
                     tel.minutos = 0;
                 }
-            }
-        }
-        #endregion
-
-        #region Cliente
-        public static void ElejirServicio(Cliente cl)
-        {
-            if (cl.Servicio == "Computadora")
-            {
-                ComputadoraAUsar(cl);
-            }
-            if (cl.Servicio == "Telefono")
-            {
-                TelefonoAUsar(cl);
             }
         }
         #endregion

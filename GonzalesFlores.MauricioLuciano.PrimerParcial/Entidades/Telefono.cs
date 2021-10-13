@@ -116,7 +116,7 @@ namespace Entidades
         }
         private string LlamarA(string numero)
         {
-            switch (this.TipoDeLlamada)
+            switch (this.TipoDeLlamadaGet)
             {
                 case "largaDistancia":
                     return string.Concat("+54 9 11 ", numero);
@@ -133,8 +133,7 @@ namespace Entidades
         {
             StringBuilder sb = new StringBuilder();
 
-            sb.AppendLine($"Tipo de Llamado: {this.TipoDeLlamada}");
-            sb.AppendLine($"Numero Llamado:{this.NumeroLlamado}");
+            sb.AppendLine($"Tipo de Llamado: {this.TipoDeLlamadaGet}");
 
             return sb.ToString();
         }
@@ -143,8 +142,7 @@ namespace Entidades
             StringBuilder sb = new StringBuilder();
 
             sb.Append(base.Mostrar());
-            sb.Append($"Tipo de Llamado: {this.TipoDeLlamada} ");
-            sb.Append($"Numero Llamado:{this.NumeroLlamado}");
+            sb.Append($"Tipo de Llamado: {this.TipoDeLlamadaGet} ");
 
             return sb.ToString();
         }

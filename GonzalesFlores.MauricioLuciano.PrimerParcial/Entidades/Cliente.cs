@@ -60,7 +60,16 @@ namespace Entidades
         #endregion
 
         #region Metodos
-
+        public string Mostrar()
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.Append($" {this.Nombre} -");
+            sb.Append($" {this.Servicio} -");
+            sb.Append($" {this.Minutos} -");
+            sb.Append($" {this.NumeroALlamar} -");
+            sb.Append($" {this.TipoDeLlamada}");
+            return sb.ToString();
+        }
         #endregion
 
 
