@@ -54,13 +54,21 @@ namespace Entidades
         {
             int tiempo = 30;
             float valor = float.Parse(valorInicial);
-
-            while (tiempo <= minutos)
+            float retorno = 0;
+            do
             {
-                valor = valor * 2;
-                minutos = minutos * 2;
-            }
-            return valor;
+                if (minutos <= tiempo)
+                {
+                    return retorno + valor;
+                }
+                else
+                {
+                    retorno = retorno + valor;
+                    tiempo = tiempo * 2;
+                }
+            } while (tiempo <= minutos);
+
+             return retorno;
         }
         public virtual string Mostrar()
         {

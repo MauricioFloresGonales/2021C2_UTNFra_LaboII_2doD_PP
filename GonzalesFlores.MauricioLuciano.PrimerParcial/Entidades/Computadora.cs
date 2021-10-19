@@ -47,7 +47,7 @@ namespace Entidades
         }
         public override float CostoDeUso
         {
-            set { base.CostoDeUso = Costo(base.minutos, "0,5"); }
+            set { base.CostoDeUso = value != 0 ? Costo(base.minutos, "0,5") : 0; }
             get { return base.CostoDeUso; }
         }
         public string SofwareInstalados

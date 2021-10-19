@@ -44,7 +44,7 @@ namespace Entidades
         }
         public override float CostoDeUso
         {
-            set { base.CostoDeUso = CalcularCosto(this.tipoDeLlamada); }
+            set { base.CostoDeUso = value != 0 ? CalcularCosto(this.tipoDeLlamada) : 0; }
             get { return base.CostoDeUso; }
         }
         public ETipoLlamada TipoDeLlamadaSet

@@ -22,7 +22,8 @@ namespace Local
         private void PantallaPriciapal_Load(object sender, EventArgs e)
         {
             Cibercafe.HardcodeoDedatos();
-            cargarDataGridView();
+            this.cargarDataGridView();
+            this.RecibirClientes();
         }
         #endregion
 
@@ -36,18 +37,23 @@ namespace Local
         {
             this.dgvcConsola.ColumnCount = 5;
             this.dgvcConsola.Columns[0].Name = "Identificador";
+            this.dgvcConsola.Columns[0].Width = 90;
             this.dgvcConsola.Columns[1].Name = "Costo De Uso";
+            this.dgvcConsola.Columns[1].Width = 80;
             this.dgvcConsola.Columns[2].Name = "Minutos";
+            this.dgvcConsola.Columns[2].Width = 60;
             this.dgvcConsola.Columns[3].Name = "Activo";
+            this.dgvcConsola.Columns[3].Width = 50;
             this.dgvcConsola.Columns[4].Name = "Servicio";
         }
         void datos()
         {
+            this.dgvcConsola.Rows.Clear();
             foreach (Computadora item in Cibercafe.ListaDeComputadoras)
             {
                 this.dgvcConsola.Rows.Add(
                     item.Identificador,
-                    item.CostoDeUso,
+                    string.Concat("$",item.CostoDeUso),
                     item.minutos,
                     item.activo,
                     item.Maquina);
@@ -56,7 +62,7 @@ namespace Local
             {
                 this.dgvcConsola.Rows.Add(
                     item.Identificador,
-                    item.CostoDeUso,
+                    string.Concat("$", item.CostoDeUso),
                     item.minutos,
                     item.activo,
                     item.Marca);
@@ -68,81 +74,147 @@ namespace Local
         void RecibirClientes()
         {
             this.lisBoxClientes.Items.Clear();
-            foreach (Cliente item in Cibercafe.FilaDeClientes)
+            foreach (Cliente item in Cibercafe.FilaDeClientesPC)
+            {
+                this.lisBoxClientes.Items.Add(item.Mostrar());
+            }
+            foreach (Cliente item in Cibercafe.FilaDeClientesTel)
             {
                 this.lisBoxClientes.Items.Add(item.Mostrar());
             }
         }
         private void btnRecibirClientes_Click(object sender, EventArgs e)
         {
+            datos();
             RecibirClientes();
         }
         #endregion
 
         #region Computadoras
-        bool EnUso(int index)
+        bool EnUso(int index, string servicio)
         {
-            Cliente cliente = Cibercafe.RetirarCliente();
-            Cibercafe.ComputadoraAUsar(index, cliente.Minutos);
-            return Cibercafe.RecibirPC(index).activo;
+            Cliente cliente = Cibercafe.RetirarCliente(servicio);
+            if (cliente.Servicio == servicio)
+            {
+                return Cibercafe.ElejirServicio(cliente, index);
+            }
+            throw new Exception("Error, en Frm.EnUso");
+        }
+        void ValidarUso(Button btn, int index, string servicio)
+        {
+            try
+            {
+                if (btn.BackColor == Color.Transparent)
+                {
+                    if (this.EnUso(index, servicio))
+                    {
+                        btn.BackColor = Color.Red;
+                    }
+                }
+                else if (btn.BackColor == Color.Red)
+                {
+                    btn.BackColor = Color.Green;
+                }
+                else if (btn.BackColor == Color.Green)
+                {
+                    if (servicio == "Computadora")
+                    {
+                        this.LiberarPc(index);
+                    }
+                    else
+                    {
+                        this.LiberarTel(index);
+                    }
+                    
+                    btn.BackColor = Color.Transparent;
+                }
+                this.cargarDataGridView();
+                this.RecibirClientes();
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message);
+            }
+        }
+        void LiberarPc(int index)
+        {
+            Cibercafe.ComputadoraLiberar(index);
         }
         private void btnPcUno_Click(object sender, EventArgs e)
         {
-            EnUso(0);
-            RecibirClientes();
+            this.ValidarUso(this.btnPcUno, 0, "Computadora");
         }
         private void btnPcDos_Click(object sender, EventArgs e)
         {
-            EnUso(1);
-            RecibirClientes();
+            this.ValidarUso(this.btnPcDos, 1, "Computadora");
         }
 
         private void btnPcTres_Click(object sender, EventArgs e)
         {
-            EnUso(2);
-            RecibirClientes();
+            this.ValidarUso(this.btnPcTres, 2, "Computadora");
         }
 
         private void btnPcCuatro_Click(object sender, EventArgs e)
         {
-            EnUso(3);
-            RecibirClientes();
+            this.ValidarUso(this.btnPcCuatro, 3, "Computadora");
         }
 
         private void btnPcCinco_Click(object sender, EventArgs e)
         {
-            EnUso(4);
-            RecibirClientes();
+            this.ValidarUso(this.btnPcCinco, 4, "Computadora");
         }
 
         private void btnPcSeis_Click(object sender, EventArgs e)
         {
-            EnUso(5);
-            RecibirClientes();
+            this.ValidarUso(this.btnPcSeis, 5, "Computadora");
         }
 
         private void btnPcSiete_Click(object sender, EventArgs e)
         {
-            EnUso(6);
-            RecibirClientes();
+            this.ValidarUso(this.btnPcSiete, 6, "Computadora");
         }
 
         private void btnPcOcho_Click(object sender, EventArgs e)
         {
-            EnUso(7);
-            RecibirClientes();
+            this.ValidarUso(this.btnPcOcho, 7, "Computadora");
         }
 
         private void btnPcNueve_Click(object sender, EventArgs e)
         {
-            EnUso(8);
-            RecibirClientes();
+            this.ValidarUso(this.btnPcNueve, 8, "Computadora");
         }
 
         private void btnPcDiez_Click(object sender, EventArgs e)
         {
-            EnUso(9);
-            RecibirClientes();
+            this.ValidarUso(this.btnPcDiez, 9, "Computadora");
+        }
+
+        #endregion
+
+        #region Telefonos
+        void LiberarTel(int index)
+        {
+            Cibercafe.TelefonoALiberar(index);
+        }
+        private void btnTelUno_Click(object sender, EventArgs e)
+        {
+            this.ValidarUso(this.btnTelUno, 0, "Telefono");
+        }
+        private void btnTelDos_Click(object sender, EventArgs e)
+        {
+            this.ValidarUso(this.btnTelDos, 1, "Telefono");
+        }
+        private void btnTelTres_Click(object sender, EventArgs e)
+        {
+            this.ValidarUso(this.btnTelTres, 2, "Telefono");
+        }
+        private void btnTelCuatro_Click(object sender, EventArgs e)
+        {
+            this.ValidarUso(this.btnTelCuatro, 3, "Telefono");
+        }
+        private void btnTelCinco_Click(object sender, EventArgs e)
+        {
+            this.ValidarUso(this.btnTelCinco, 4, "Telefono");
         }
         #endregion
     }

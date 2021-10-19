@@ -10,7 +10,8 @@ namespace Entidades
     {
         static List<Computadora> listaDeComputadoras;
         static List<Telefono> listaDeTelefonos;
-        static Queue<Cliente> filaDeClientes;
+        static Queue<Cliente> filaDeClientesPC;
+        static Queue<Cliente> filaDeClientesTel;
 
 
         public static List<Computadora> ListaDeComputadoras
@@ -21,9 +22,13 @@ namespace Entidades
         {
             get { return listaDeTelefonos; }
         }
-        public static Queue<Cliente> FilaDeClientes
+        public static Queue<Cliente> FilaDeClientesPC
         {
-            get { return filaDeClientes; }
+            get { return filaDeClientesPC; }
+        }
+        public static Queue<Cliente> FilaDeClientesTel
+        {
+            get { return filaDeClientesTel; }
         }
 
         #region Constructores
@@ -31,7 +36,8 @@ namespace Entidades
         {
             listaDeComputadoras = new List<Computadora>();
             listaDeTelefonos = new List<Telefono>();
-            filaDeClientes = new Queue<Cliente>();
+            filaDeClientesPC = new Queue<Cliente>();
+            filaDeClientesTel = new Queue<Cliente>();
         }
         #endregion
 
@@ -118,10 +124,17 @@ namespace Entidades
             Cliente cl1 = new Cliente("Uno", "Telefono", 30, "123", ETipoLlamada.Internacional);
             Cliente cl2 = new Cliente("Dos", "Telefono", 30, "345", ETipoLlamada.largaDistancia);
             Cliente cl3 = new Cliente("Tres", "Telefono", 60, "567", ETipoLlamada.local);
-            Cliente cl4 = new Cliente("Cuatro", "Computadora", 30);
+            Cliente cl4 = new Cliente("Cuatro", "Computadora", 90);
             Cliente cl5 = new Cliente("Cinco", "Computadora", 30);
-            Cliente cl6 = new Cliente("Seis", "Computadora", 30);
-            Cliente cl7 = new Cliente("Siete", "Computadora", 30);
+            Cliente cl6 = new Cliente("Seis", "Computadora", 120);
+            Cliente cl7 = new Cliente("Siete", "Computadora", 220);
+            Cliente cl8 = new Cliente("Uno", "Telefono", 30, "123", ETipoLlamada.Internacional);
+            Cliente cl9 = new Cliente("Dos", "Telefono", 30, "345", ETipoLlamada.largaDistancia);
+            Cliente cl10 = new Cliente("Tres", "Telefono", 60, "567", ETipoLlamada.local);
+            Cliente cl11 = new Cliente("Cuatro", "Computadora", 90);
+            Cliente cl12 = new Cliente("Cinco", "Computadora", 30);
+            Cliente cl13 = new Cliente("Seis", "Computadora", 120);
+            Cliente cl14= new Cliente("Siete", "Computadora", 220);
 
             AgregarALista(cl1);
             AgregarALista(cl2);
@@ -130,6 +143,13 @@ namespace Entidades
             AgregarALista(cl5);
             AgregarALista(cl6);
             AgregarALista(cl7);
+            AgregarALista(cl8);
+            AgregarALista(cl9);
+            AgregarALista(cl10);
+            AgregarALista(cl11);
+            AgregarALista(cl12);
+            AgregarALista(cl13);
+            AgregarALista(cl14);
         }
         #endregion
 
@@ -138,42 +158,71 @@ namespace Entidades
         {
             try
             {
-                filaDeClientes.Enqueue(cl);
+                if (cl.Servicio == "Computadora")
+                {
+                    filaDeClientesPC.Enqueue(cl);
+                } else
+                {
+                    filaDeClientesTel.Enqueue(cl);
+                }
+                
             }
             catch (Exception err)
             {
                 throw err;
             }
         }
-        public static Cliente RetirarCliente()
+        public static Cliente RetirarCliente(string servicio)
         {
             try
             {
-                if (filaDeClientes != null)
+                if (servicio == "Computadora")
                 {
-                    foreach (Cliente item in filaDeClientes)
+                    if (filaDeClientesPC != null)
                     {
-                        return filaDeClientes.Dequeue();
+                        foreach (Cliente item in filaDeClientesPC)
+                        {
+                            if (item.Servicio == servicio)
+                            {
+                                return filaDeClientesPC.Dequeue();
+                            }
+                        }
+                        throw new Exception("El cliente que se quiere retirar de la fila no esta en la fila.");
                     }
-                    throw new Exception("El cliente que se quiere retirar de la fila no esta en la fila.");
+                    throw new Exception("La fila de clientes esta vacia.");
                 }
-                throw new Exception("La fila de clientes esta vacia.");
+                else
+                {
+                    if (filaDeClientesTel != null)
+                    {
+                        foreach (Cliente item in filaDeClientesTel)
+                        {
+                            if (item.Servicio == servicio)
+                            {
+                                return filaDeClientesTel.Dequeue();
+                            }
+                        }
+                        throw new Exception("El cliente que se quiere retirar de la fila no esta en la fila.");
+                    }
+                    throw new Exception("La fila de clientes esta vacia.");
+                }
             }
             catch (Exception err)
             {
                 throw err;
             }
         }
-        public static void ElejirServicio(Cliente cl)
+        public static bool ElejirServicio(Cliente cl, int index)
         {
             if (cl.Servicio == "Computadora")
             {
-                //ComputadoraAUsar(cl);
+                return ComputadoraAUsar(index, cl.Minutos);
             }
             if (cl.Servicio == "Telefono")
             {
-                TelefonoAUsar(cl);
+                return TelefonoAUsar(cl, index, cl.Minutos);
             }
+            throw new Exception("Error, en ElejirServicio");
         }
         #endregion
 
@@ -222,7 +271,7 @@ namespace Entidades
                 throw err;
             }
         }
-        public static void ComputadoraAUsar(int index, int minutos)
+        public static bool ComputadoraAUsar(int index, int minutos)
         {
             foreach (Computadora item in listaDeComputadoras)
             {
@@ -230,17 +279,21 @@ namespace Entidades
                 {
                     item.activo = true;
                     item.minutos = minutos;
+                    item.CostoDeUso = minutos;
+                    return item.activo;
                 }
             }
+            return false;
         }
-        public static void ComputadoraLiberar(Computadora pc)
+        public static void ComputadoraLiberar(int index)
         {
             foreach (Computadora item in listaDeComputadoras)
             {
-                if (item.Identificador == pc.Identificador)
+                if (item == RecibirPC(index))
                 {
                     item.activo = false;
                     item.minutos = 0;
+                    item.CostoDeUso = 0;
                 }
             }
         }
@@ -273,19 +326,15 @@ namespace Entidades
                 throw err;
             }
         }
-        public static bool RetirarDeLaListaTel(Telefono tel)
+        public static Telefono RecibirTel(int index)
         {
             try
             {
                 if (listaDeTelefonos.Count >= 1)
                 {
-                    foreach (Telefono item in listaDeTelefonos)
+                    if (listaDeTelefonos.Count >= index)
                     {
-                        if (item == tel)
-                        {
-
-                            return listaDeTelefonos.Remove(tel);
-                        }
+                        return listaDeTelefonos[index];
                     }
                     throw new Exception("El telefono que se quiere eliminar no esta en la lista.");
                 }
@@ -296,28 +345,30 @@ namespace Entidades
                 throw err;
             }
         }
-        public static Telefono TelefonoAUsar(Cliente cl)
+        public static bool TelefonoAUsar(Cliente cl,int index, int minutos)
         {
             foreach (Telefono item in listaDeTelefonos)
             {
-                if (item.activo == false)
+                if (item == RecibirTel(index))
                 {
                     item.activo = true;
-                    item.minutos = cl.Minutos;
+                    item.minutos = minutos;
+                    item.CostoDeUso = cl.Minutos;
                     item.TipoDeLlamadaSet = cl.TipoDeLlamada;
-                    return item;
+                    return item.activo;
                 }
             }
             throw new Exception("No hay un telefono disponible");
         }
-        public static void TelefonoALiberar(Telefono tel)
+        public static void TelefonoALiberar(int index)
         {
-            foreach (Telefono item in listaDeTelefonos)
+            foreach (Telefono tel in listaDeTelefonos)
             {
-                if (tel.Identificador == tel.Identificador)
+                if (tel == RecibirTel(index))
                 {
                     tel.activo = false;
                     tel.minutos = 0;
+                    tel.CostoDeUso = 0;
                 }
             }
         }
