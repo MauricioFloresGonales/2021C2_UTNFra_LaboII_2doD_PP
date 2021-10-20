@@ -83,11 +83,6 @@ namespace Local
                 this.lisBoxClientes.Items.Add(item.Mostrar());
             }
         }
-        private void btnRecibirClientes_Click(object sender, EventArgs e)
-        {
-            datos();
-            RecibirClientes();
-        }
         #endregion
 
         #region Computadoras
@@ -217,5 +212,15 @@ namespace Local
             this.ValidarUso(this.btnTelCinco, 4, "Telefono");
         }
         #endregion
+
+        private void btnAgregarCliente_Click(object sender, EventArgs e)
+        {
+            CrearUsuario frmCrearUsuario = new CrearUsuario();
+            if (frmCrearUsuario.ShowDialog() == DialogResult.OK)
+            {
+                
+            }
+            this.RecibirClientes();
+        }
     }
 }

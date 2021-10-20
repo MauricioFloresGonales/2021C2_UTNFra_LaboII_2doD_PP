@@ -46,14 +46,11 @@ namespace Entidades
         public Cliente(string nombre, string servicio, int minutos)
         {
             this.nombre = nombre;
-            this.servicio = servicio;
+            this.servicio = servicio == "Computadora" ? servicio : "Telefono";
             this.minutos = minutos;
         }
-        public Cliente(string nombre, string servicio, int minutos, string numeroALlamar, ETipoLlamada tipo)
+        public Cliente(string nombre, string servicio, int minutos, string numeroALlamar, ETipoLlamada tipo): this(nombre,servicio,minutos)
         {
-            this.nombre = nombre;
-            this.servicio = servicio;
-            this.minutos = minutos;
             this.numerosALlamar = numeroALlamar;
             this.tipoLlamada = tipo;
         }

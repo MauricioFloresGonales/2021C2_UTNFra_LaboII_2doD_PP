@@ -13,7 +13,7 @@ namespace Entidades
         static Queue<Cliente> filaDeClientesPC;
         static Queue<Cliente> filaDeClientesTel;
 
-
+        #region Propiedades
         public static List<Computadora> ListaDeComputadoras
         {
             get { return listaDeComputadoras; }
@@ -30,6 +30,7 @@ namespace Entidades
         {
             get { return filaDeClientesTel; }
         }
+        #endregion
 
         #region Constructores
         static Cibercafe()

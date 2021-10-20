@@ -51,9 +51,8 @@ namespace Local
             this.grBoxTelefonos = new System.Windows.Forms.GroupBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.lisBoxClientes = new System.Windows.Forms.ListBox();
-            this.btnRecibirClientes = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnAgregarCliente = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvcConsola)).BeginInit();
             this.grBoxTelefonos.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -308,16 +307,6 @@ namespace Local
             this.lisBoxClientes.Size = new System.Drawing.Size(353, 193);
             this.lisBoxClientes.TabIndex = 18;
             // 
-            // btnRecibirClientes
-            // 
-            this.btnRecibirClientes.Location = new System.Drawing.Point(752, 227);
-            this.btnRecibirClientes.Name = "btnRecibirClientes";
-            this.btnRecibirClientes.Size = new System.Drawing.Size(156, 29);
-            this.btnRecibirClientes.TabIndex = 19;
-            this.btnRecibirClientes.Text = "Recibir Clientes";
-            this.btnRecibirClientes.UseVisualStyleBackColor = true;
-            this.btnRecibirClientes.Click += new System.EventHandler(this.btnRecibirClientes_Click);
-            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -328,14 +317,15 @@ namespace Local
             this.label1.TabIndex = 20;
             this.label1.Text = "Clientes:";
             // 
-            // button1
+            // btnAgregarCliente
             // 
-            this.button1.Location = new System.Drawing.Point(752, 262);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(156, 30);
-            this.button1.TabIndex = 21;
-            this.button1.Text = "Agregar Cliente";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnAgregarCliente.Location = new System.Drawing.Point(752, 262);
+            this.btnAgregarCliente.Name = "btnAgregarCliente";
+            this.btnAgregarCliente.Size = new System.Drawing.Size(156, 30);
+            this.btnAgregarCliente.TabIndex = 21;
+            this.btnAgregarCliente.Text = "Agregar Cliente";
+            this.btnAgregarCliente.UseVisualStyleBackColor = true;
+            this.btnAgregarCliente.Click += new System.EventHandler(this.btnAgregarCliente_Click);
             // 
             // PantallaPriciapal
             // 
@@ -343,9 +333,8 @@ namespace Local
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlDarkDark;
             this.ClientSize = new System.Drawing.Size(984, 676);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btnAgregarCliente);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.btnRecibirClientes);
             this.Controls.Add(this.lisBoxClientes);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.grBoxTelefonos);
@@ -386,9 +375,8 @@ namespace Local
         private System.Windows.Forms.GroupBox grBoxTelefonos;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.ListBox lisBoxClientes;
-        private System.Windows.Forms.Button btnRecibirClientes;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnAgregarCliente;
     }
 }
 
