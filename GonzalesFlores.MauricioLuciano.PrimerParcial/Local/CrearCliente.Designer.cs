@@ -1,7 +1,7 @@
 ﻿
 namespace Local
 {
-    partial class CrearUsuario
+    partial class CrearCliente
     {
         /// <summary>
         /// Required designer variable.
@@ -92,9 +92,9 @@ namespace Local
             this.lblTitulo.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTitulo.Location = new System.Drawing.Point(36, 9);
             this.lblTitulo.Name = "lblTitulo";
-            this.lblTitulo.Size = new System.Drawing.Size(158, 25);
+            this.lblTitulo.Size = new System.Drawing.Size(151, 25);
             this.lblTitulo.TabIndex = 6;
-            this.lblTitulo.Text = "Crear Usuario";
+            this.lblTitulo.Text = "Crear Cliente";
             // 
             // btnCrear
             // 
@@ -128,7 +128,7 @@ namespace Local
             this.nudMinutos.Size = new System.Drawing.Size(128, 20);
             this.nudMinutos.TabIndex = 9;
             // 
-            // CrearUsuario
+            // CrearCliente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -146,7 +146,7 @@ namespace Local
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "CrearUsuario";
+            this.Name = "CrearCliente";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "CrearUsuario";
             this.Load += new System.EventHandler(this.CrearUsuario_Load);

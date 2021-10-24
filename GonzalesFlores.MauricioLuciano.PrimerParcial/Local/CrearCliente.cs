@@ -11,9 +11,9 @@ using Entidades;
 
 namespace Local
 {
-    public partial class CrearUsuario : Form
+    public partial class CrearCliente : Form
     {
-        public CrearUsuario()
+        public CrearCliente()
         {
             InitializeComponent();
         }

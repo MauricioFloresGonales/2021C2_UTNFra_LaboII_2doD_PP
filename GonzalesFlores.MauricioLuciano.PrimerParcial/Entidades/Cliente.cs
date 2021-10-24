@@ -8,14 +8,20 @@ namespace Entidades
 {
     public class Cliente
     {
+        string dni;
         string nombre;
+        string apellido;
+        int edad;
         string servicio;
         int minutos;
         string numerosALlamar;
         ETipoLlamada tipoLlamada;
 
-
         #region Propiedades
+        public string Dni
+        {
+            get { return this.dni; }
+        }
         public string Nombre 
         {
             get { return this.nombre; }
@@ -23,11 +29,21 @@ namespace Entidades
         public string Servicio
         {
             get { return this.servicio; }
+            set { this.servicio = value == "Computadora" ? servicio : "Telefono"; }
+
+        }
+        public string Apellodo
+        {
+            get { return this.apellido; }
 
         }
         public int Minutos
         {
             get { return this.minutos; }
+        }
+        public int Edad
+        {
+            get { return this.edad; }
         }
         public string NumeroALlamar
         {
@@ -43,13 +59,15 @@ namespace Entidades
         public Cliente()
         {
         }
-        public Cliente(string nombre, string servicio, int minutos)
+        public Cliente(string dni, string nombre, string apellido, int edad, string servicio, int minutos):this()
         {
+            this.dni = dni;
             this.nombre = nombre;
-            this.servicio = servicio == "Computadora" ? servicio : "Telefono";
+            this.apellido = apellido;
+            this.servicio = servicio;
             this.minutos = minutos;
         }
-        public Cliente(string nombre, string servicio, int minutos, string numeroALlamar, ETipoLlamada tipo): this(nombre,servicio,minutos)
+        public Cliente(string dni, string nombre, string apellido, int edad string servicio, int minutos, string numeroALlamar, ETipoLlamada tipo): this(dni,nombre,apellido,edad,servicio,minutos)
         {
             this.numerosALlamar = numeroALlamar;
             this.tipoLlamada = tipo;

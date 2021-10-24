@@ -18,12 +18,15 @@ namespace Local
             InitializeComponent();
         }
 
-        #region Form
+        #region Form Pricipal
         private void PantallaPriciapal_Load(object sender, EventArgs e)
         {
             Cibercafe.HardcodeoDedatos();
             this.cargarDataGridView();
             this.RecibirClientes();
+            this.tsmInformacion.ToolTipText = "Contar con una barra de información de la aplicación donde" +
+                "figure el nombre del operador conectado (que deberá ser TU nombre) " +
+                "y la fecha actual (sin la hora).";
         }
         #endregion
 
@@ -213,14 +216,16 @@ namespace Local
         }
         #endregion
 
+        #region Form Crear Cliente
         private void btnAgregarCliente_Click(object sender, EventArgs e)
         {
-            CrearUsuario frmCrearUsuario = new CrearUsuario();
+            CrearCliente frmCrearUsuario = new CrearCliente();
             if (frmCrearUsuario.ShowDialog() == DialogResult.OK)
             {
                 
             }
             this.RecibirClientes();
         }
+        #endregion
     }
 }

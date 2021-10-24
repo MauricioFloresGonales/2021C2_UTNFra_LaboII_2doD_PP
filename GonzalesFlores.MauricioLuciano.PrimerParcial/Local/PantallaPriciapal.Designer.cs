@@ -53,9 +53,14 @@ namespace Local
             this.lisBoxClientes = new System.Windows.Forms.ListBox();
             this.label1 = new System.Windows.Forms.Label();
             this.btnAgregarCliente = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.tsmOpciones = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmInformacion = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.dgvcConsola)).BeginInit();
             this.grBoxTelefonos.SuspendLayout();
             this.groupBox1.SuspendLayout();
+            this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // dgvcConsola
@@ -79,7 +84,7 @@ namespace Local
             dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dgvcConsola.DefaultCellStyle = dataGridViewCellStyle5;
             this.dgvcConsola.GridColor = System.Drawing.SystemColors.Control;
-            this.dgvcConsola.Location = new System.Drawing.Point(12, 12);
+            this.dgvcConsola.Location = new System.Drawing.Point(12, 28);
             this.dgvcConsola.Name = "dgvcConsola";
             this.dgvcConsola.ReadOnly = true;
             dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
@@ -268,7 +273,7 @@ namespace Local
             this.grBoxTelefonos.Controls.Add(this.btnTelTres);
             this.grBoxTelefonos.Controls.Add(this.btnTelCuatro);
             this.grBoxTelefonos.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.grBoxTelefonos.Location = new System.Drawing.Point(12, 539);
+            this.grBoxTelefonos.Location = new System.Drawing.Point(12, 553);
             this.grBoxTelefonos.Name = "grBoxTelefonos";
             this.grBoxTelefonos.Size = new System.Drawing.Size(607, 130);
             this.grBoxTelefonos.TabIndex = 16;
@@ -289,7 +294,7 @@ namespace Local
             this.groupBox1.Controls.Add(this.btnPcSiete);
             this.groupBox1.Controls.Add(this.btnPcOcho);
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox1.Location = new System.Drawing.Point(12, 403);
+            this.groupBox1.Location = new System.Drawing.Point(12, 417);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(607, 130);
             this.groupBox1.TabIndex = 17;
@@ -302,7 +307,7 @@ namespace Local
             this.lisBoxClientes.Font = new System.Drawing.Font("Microsoft Tai Le", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lisBoxClientes.FormattingEnabled = true;
             this.lisBoxClientes.ItemHeight = 21;
-            this.lisBoxClientes.Location = new System.Drawing.Point(625, 28);
+            this.lisBoxClientes.Location = new System.Drawing.Point(628, 47);
             this.lisBoxClientes.Name = "lisBoxClientes";
             this.lisBoxClientes.Size = new System.Drawing.Size(353, 193);
             this.lisBoxClientes.TabIndex = 18;
@@ -311,15 +316,15 @@ namespace Local
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(625, 9);
+            this.label1.Location = new System.Drawing.Point(625, 28);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(68, 16);
+            this.label1.Size = new System.Drawing.Size(143, 16);
             this.label1.TabIndex = 20;
-            this.label1.Text = "Clientes:";
+            this.label1.Text = "Clientes en Espera:";
             // 
             // btnAgregarCliente
             // 
-            this.btnAgregarCliente.Location = new System.Drawing.Point(752, 262);
+            this.btnAgregarCliente.Location = new System.Drawing.Point(739, 262);
             this.btnAgregarCliente.Name = "btnAgregarCliente";
             this.btnAgregarCliente.Size = new System.Drawing.Size(156, 30);
             this.btnAgregarCliente.TabIndex = 21;
@@ -327,19 +332,55 @@ namespace Local
             this.btnAgregarCliente.UseVisualStyleBackColor = true;
             this.btnAgregarCliente.Click += new System.EventHandler(this.btnAgregarCliente_Click);
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(739, 298);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(156, 30);
+            this.button1.TabIndex = 22;
+            this.button1.Text = "Estadisticas Historicas";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
+            // menuStrip1
+            // 
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsmOpciones});
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(984, 24);
+            this.menuStrip1.TabIndex = 23;
+            this.menuStrip1.Text = "menuStrip1";
+            // 
+            // tsmOpciones
+            // 
+            this.tsmOpciones.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsmInformacion});
+            this.tsmOpciones.Name = "tsmOpciones";
+            this.tsmOpciones.Size = new System.Drawing.Size(69, 20);
+            this.tsmOpciones.Text = "Opciones";
+            // 
+            // tsmInformacion
+            // 
+            this.tsmInformacion.Name = "tsmInformacion";
+            this.tsmInformacion.Size = new System.Drawing.Size(180, 22);
+            this.tsmInformacion.Text = "Informacion";
+            // 
             // PantallaPriciapal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.ClientSize = new System.Drawing.Size(984, 676);
+            this.ClientSize = new System.Drawing.Size(984, 695);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.btnAgregarCliente);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.lisBoxClientes);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.grBoxTelefonos);
             this.Controls.Add(this.dgvcConsola);
+            this.Controls.Add(this.menuStrip1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MainMenuStrip = this.menuStrip1;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "PantallaPriciapal";
@@ -349,6 +390,8 @@ namespace Local
             ((System.ComponentModel.ISupportInitialize)(this.dgvcConsola)).EndInit();
             this.grBoxTelefonos.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -377,6 +420,10 @@ namespace Local
         private System.Windows.Forms.ListBox lisBoxClientes;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnAgregarCliente;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem tsmOpciones;
+        private System.Windows.Forms.ToolStripMenuItem tsmInformacion;
     }
 }
 
