@@ -27,7 +27,7 @@ namespace Entidades
         ETipo tipo;
         EMarca marca;
         ETipoLlamada tipoDeLlamada;
-
+        // hay que replicar los cambios que se hicieron en Computadora
 
         #region Propiedades
         public override string Identificador

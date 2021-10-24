@@ -99,16 +99,16 @@ namespace Entidades
             Computadora pc9 = new Computadora("9", false, soft1, peri1, juegos1, hw1);
             Computadora pc10 = new Computadora("10", false, soft1, peri1, juegos1, hw1);
 
-            AgregarALista(pc1);
-            AgregarALista(pc2);
-            AgregarALista(pc3);
-            AgregarALista(pc4);
-            AgregarALista(pc5);
-            AgregarALista(pc6);
-            AgregarALista(pc7);
-            AgregarALista(pc8);
-            AgregarALista(pc9);
-            AgregarALista(pc10);
+            listaDeComputadoras+=pc1;
+            listaDeComputadoras+=pc2;
+            listaDeComputadoras+=pc3;
+            listaDeComputadoras+=pc4;
+            listaDeComputadoras+=pc5;
+            listaDeComputadoras+=pc6;
+            listaDeComputadoras+=pc7;
+            listaDeComputadoras+=pc8;
+            listaDeComputadoras+=pc9;
+            listaDeComputadoras+=pc10;
 
             Telefono tel1 = new Telefono("1", false, ETipo.aDisco, EMarca.telefonica);
             Telefono tel2 = new Telefono("2", false, ETipo.aDisco, EMarca.nokia);
@@ -227,31 +227,6 @@ namespace Entidades
         #endregion
 
         #region Metodos Computadora
-        public static void AgregarALista( Computadora pc)
-        {
-            try
-            {
-                if (listaDeComputadoras.Count == 0)
-                {
-                    listaDeComputadoras.Add(pc);
-                } else
-                {
-                    foreach (Computadora item in listaDeComputadoras)
-                    {
-                        if (item == pc)
-                        {
-                            throw new Exception("La computadora ya existe");
-                        }
-                    }
-                    listaDeComputadoras.Add(pc);
-                }
-                
-            }
-            catch (Exception err)
-            {
-                throw err;
-            }
-        }
         public static Computadora RecibirPC(string idPc)
         {
             try

@@ -179,7 +179,21 @@ namespace Entidades
         {
             if (!object.ReferenceEquals(pc, null))
             {
-                listaPCs.Add(pc);
+                if (listaPCs.Count == 0)
+                {
+                    listaPCs.Add(pc);
+                }
+                else
+                {
+                    foreach (Computadora item in listaPCs)
+                    {
+                        if (item == pc)
+                        {
+                            throw new Exception("La computadora ya existe");
+                        }
+                    }
+                    listaPCs.Add(pc);
+                }
             }
             return listaPCs;
         }
