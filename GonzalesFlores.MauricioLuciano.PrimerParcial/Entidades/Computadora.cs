@@ -113,6 +113,20 @@ namespace Entidades
             }
             return sb.ToString();
         }
+        public static bool Liberar(List<Computadora> listaPCs, string idPc)
+        {
+            foreach (Computadora item in listaPCs)
+            {
+                if (item.Identificador == idPc)
+                {
+                    item.activo = false;
+                    item.minutos = 0;
+                    item.CostoDeUso = 0;
+                    return true;
+                }
+            }
+            return false;
+        }
         #endregion
 
         #region Override
@@ -160,6 +174,25 @@ namespace Entidades
             if (codigo[0] == 'C')
                 return true;
             return false;
+        }
+        public static List<Computadora> operator +(List<Computadora> listaPCs, Computadora pc)
+        {
+            if (!object.ReferenceEquals(pc, null))
+            {
+                listaPCs.Add(pc);
+            }
+            return listaPCs;
+        }
+        public static bool operator +(Computadora pc, int minutos)
+        {
+            if (!object.ReferenceEquals(pc, null))
+            {
+                pc.activo = true;
+                pc.minutos = minutos;
+                pc.CostoDeUso = minutos;
+                return pc.Activo;
+            }
+            throw new Exception("El objeto PC es nulo");
         }
         #endregion
     }

@@ -98,13 +98,13 @@ namespace Local
             }
             throw new Exception("Error, en Frm.EnUso");
         }
-        void ValidarUso(Button btn, int index, string servicio)
+        void ValidarUso(Button btn, string id, string servicio)
         {
             try
             {
                 if (btn.BackColor == Color.Transparent)
                 {
-                    if (this.EnUso(index, servicio))
+                    if (this.EnUso(id, servicio))
                     {
                         btn.BackColor = Color.Red;
                     }
@@ -117,11 +117,11 @@ namespace Local
                 {
                     if (servicio == "Computadora")
                     {
-                        this.LiberarPc(index);
+                        this.LiberarPc(id);
                     }
                     else
                     {
-                        this.LiberarTel(index);
+                        this.LiberarTel(id);
                     }
                     
                     btn.BackColor = Color.Transparent;
@@ -134,9 +134,9 @@ namespace Local
                 MessageBox.Show(e.Message);
             }
         }
-        void LiberarPc(int index)
+        void LiberarPc(string idPc)
         {
-            Cibercafe.ComputadoraLiberar(index);
+            Cibercafe.ComputadoraLiberar(idPc);
         }
         private void btnPcUno_Click(object sender, EventArgs e)
         {

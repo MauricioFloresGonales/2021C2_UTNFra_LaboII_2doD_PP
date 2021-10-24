@@ -11,7 +11,7 @@ namespace Entidades
         string identificador;
         float costoDeUso;
         public int minutos;
-        public bool activo;
+        protected bool activo;
 
         #region Propiedades
         public virtual string Identificador
@@ -23,6 +23,10 @@ namespace Entidades
         {
             set { this.costoDeUso = value; }
             get { return this.costoDeUso; }
+        }
+        public bool Activo
+        {
+            get { return this.activo; }
         }
         #endregion
 

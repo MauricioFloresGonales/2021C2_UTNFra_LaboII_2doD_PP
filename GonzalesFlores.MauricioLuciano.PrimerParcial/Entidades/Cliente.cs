@@ -64,10 +64,11 @@ namespace Entidades
             this.dni = dni;
             this.nombre = nombre;
             this.apellido = apellido;
+            this.edad = edad;
             this.servicio = servicio;
             this.minutos = minutos;
         }
-        public Cliente(string dni, string nombre, string apellido, int edad string servicio, int minutos, string numeroALlamar, ETipoLlamada tipo): this(dni,nombre,apellido,edad,servicio,minutos)
+        public Cliente(string dni, string nombre, string apellido, int edad, string servicio, int minutos, string numeroALlamar, ETipoLlamada tipo): this(dni,nombre,apellido,edad,servicio,minutos)
         {
             this.numerosALlamar = numeroALlamar;
             this.tipoLlamada = tipo;
@@ -78,12 +79,23 @@ namespace Entidades
         public string Mostrar()
         {
             StringBuilder sb = new StringBuilder();
+            sb.Append($" {this.Dni} -");
             sb.Append($" {this.Nombre} -");
+            sb.Append($" {this.Apellodo} -");
+            sb.Append($" {this.Edad} -");
             sb.Append($" {this.Servicio} -");
             sb.Append($" {this.Minutos} -");
             sb.Append($" {this.NumeroALlamar} -");
             sb.Append($" {this.TipoDeLlamada}");
             return sb.ToString();
+        }
+        public static Queue<Cliente> operator +(Queue<Cliente> filaClientes, Cliente cl)
+        {
+            if (!object.ReferenceEquals(cl, null))
+            {
+                filaClientes.Enqueue(cl);
+            }
+            return filaClientes;
         }
         #endregion
 

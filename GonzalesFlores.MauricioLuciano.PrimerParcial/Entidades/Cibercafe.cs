@@ -122,20 +122,20 @@ namespace Entidades
             AgregarALista(tel4);
             AgregarALista(tel5);
 
-            Cliente cl1 = new Cliente("Uno", "Telefono", 30, "123", ETipoLlamada.Internacional);
-            Cliente cl2 = new Cliente("Dos", "Telefono", 30, "345", ETipoLlamada.largaDistancia);
-            Cliente cl3 = new Cliente("Tres", "Telefono", 60, "567", ETipoLlamada.local);
-            Cliente cl4 = new Cliente("Cuatro", "Computadora", 90);
-            Cliente cl5 = new Cliente("Cinco", "Computadora", 30);
-            Cliente cl6 = new Cliente("Seis", "Computadora", 120);
-            Cliente cl7 = new Cliente("Siete", "Computadora", 220);
-            Cliente cl8 = new Cliente("Uno", "Telefono", 30, "123", ETipoLlamada.Internacional);
-            Cliente cl9 = new Cliente("Dos", "Telefono", 30, "345", ETipoLlamada.largaDistancia);
-            Cliente cl10 = new Cliente("Tres", "Telefono", 60, "567", ETipoLlamada.local);
-            Cliente cl11 = new Cliente("Cuatro", "Computadora", 90);
-            Cliente cl12 = new Cliente("Cinco", "Computadora", 30);
-            Cliente cl13 = new Cliente("Seis", "Computadora", 120);
-            Cliente cl14= new Cliente("Siete", "Computadora", 220);
+            Cliente cl1 = new Cliente("1", "Uno", "", 1,"Telefono", 30, "123", ETipoLlamada.Internacional);
+            Cliente cl2 = new Cliente("2", "Dos", "", 2, "Telefono", 30, "345", ETipoLlamada.largaDistancia);
+            Cliente cl3 = new Cliente("3", "Tres", "", 3, "Telefono", 60, "567", ETipoLlamada.local);
+            Cliente cl4 = new Cliente("4", "Cuatro", "", 4, "Computadora", 90);
+            Cliente cl5 = new Cliente("5", "Cinco", "", 5, "Computadora", 30);
+            Cliente cl6 = new Cliente("6", "Seis", "", 6, "Computadora", 120);
+            Cliente cl7 = new Cliente("7", "Siete", "", 7 ,"Computadora", 220);
+            Cliente cl8 = new Cliente("8", "Uno", "", 8, "Telefono", 30, "123", ETipoLlamada.Internacional);
+            Cliente cl9 = new Cliente("9", "Dos", "", 9, "Telefono", 30, "345", ETipoLlamada.largaDistancia);
+            Cliente cl10 = new Cliente("10", "Tres", "", 10, "Telefono", 60, "567", ETipoLlamada.local);
+            Cliente cl11 = new Cliente("11", "Cuatro", "", 11, "Computadora", 90);
+            Cliente cl12 = new Cliente("12", "Cinco", "", 12, "Computadora", 30);
+            Cliente cl13 = new Cliente("13", "Seis", "", 13, "Computadora", 120);
+            Cliente cl14= new Cliente("14", "Siete", "", 14, "Computadora", 220);
 
             AgregarALista(cl1);
             AgregarALista(cl2);
@@ -161,12 +161,11 @@ namespace Entidades
             {
                 if (cl.Servicio == "Computadora")
                 {
-                    filaDeClientesPC.Enqueue(cl);
+                    filaDeClientesPC+=cl;
                 } else
                 {
-                    filaDeClientesTel.Enqueue(cl);
+                    filaDeClientesTel+=cl;
                 }
-                
             }
             catch (Exception err)
             {
@@ -213,15 +212,15 @@ namespace Entidades
                 throw err;
             }
         }
-        public static bool ElejirServicio(Cliente cl, int index)
+        public static bool ElejirServicio(Cliente cl, string idServicio)
         {
             if (cl.Servicio == "Computadora")
             {
-                return ComputadoraAUsar(index, cl.Minutos);
+                return ComputadoraAUsar(idServicio, cl.Minutos);
             }
             if (cl.Servicio == "Telefono")
             {
-                return TelefonoAUsar(cl, index, cl.Minutos);
+                return TelefonoAUsar(cl, idServicio, cl.Minutos);
             }
             throw new Exception("Error, en ElejirServicio");
         }
@@ -253,15 +252,18 @@ namespace Entidades
                 throw err;
             }
         }
-        public static Computadora RecibirPC(int index)
+        public static Computadora RecibirPC(string idPc)
         {
             try
             {
                 if (listaDeComputadoras.Count >= 1)
                 {
-                    if (listaDeComputadoras.Count >= index)
+                    foreach (Computadora item in listaDeComputadoras)
                     {
-                        return listaDeComputadoras[index];
+                        if (item.Identificador == idPc)
+                        {
+                            return item;
+                        }
                     }
                     throw new Exception("La pc que se requiere no esta en la lista.");
                 }
@@ -272,30 +274,36 @@ namespace Entidades
                 throw err;
             }
         }
-        public static bool ComputadoraAUsar(int index, int minutos)
+        public static bool ComputadoraAUsar(string index, int minutos)
         {
-            foreach (Computadora item in listaDeComputadoras)
+            try
             {
-                if (item == RecibirPC(index))
+                foreach (Computadora item in listaDeComputadoras)
                 {
-                    item.activo = true;
-                    item.minutos = minutos;
-                    item.CostoDeUso = minutos;
-                    return item.activo;
+                    if (item == RecibirPC(index))
+                    {
+                        return item + minutos;
+                    }
+                }
+                return false;
+            }
+            catch (Exception err)
+            {
+                throw err;
+            }
+        }
+        public static void ComputadoraLiberar(string idPc)
+        {
+            try
+            {
+                if (Computadora.Liberar(listaDeComputadoras, idPc) == false)
+                {
+                    throw new Exception("No se pudo liberar la PC que solicitó");
                 }
             }
-            return false;
-        }
-        public static void ComputadoraLiberar(int index)
-        {
-            foreach (Computadora item in listaDeComputadoras)
+            catch (Exception err)
             {
-                if (item == RecibirPC(index))
-                {
-                    item.activo = false;
-                    item.minutos = 0;
-                    item.CostoDeUso = 0;
-                }
+                throw err;
             }
         }
         #endregion
