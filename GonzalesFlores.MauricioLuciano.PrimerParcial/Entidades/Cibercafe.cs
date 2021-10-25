@@ -122,20 +122,20 @@ namespace Entidades
             AgregarALista(tel4);
             AgregarALista(tel5);
 
-            Cliente cl1 = new Cliente("1", "Uno", "", 1,"Telefono", 30, "123", ETipoLlamada.Internacional);
-            Cliente cl2 = new Cliente("2", "Dos", "", 2, "Telefono", 30, "345", ETipoLlamada.largaDistancia);
-            Cliente cl3 = new Cliente("3", "Tres", "", 3, "Telefono", 60, "567", ETipoLlamada.local);
-            Cliente cl4 = new Cliente("4", "Cuatro", "", 4, "Computadora", 90);
-            Cliente cl5 = new Cliente("5", "Cinco", "", 5, "Computadora", 30);
-            Cliente cl6 = new Cliente("6", "Seis", "", 6, "Computadora", 120);
-            Cliente cl7 = new Cliente("7", "Siete", "", 7 ,"Computadora", 220);
-            Cliente cl8 = new Cliente("8", "Uno", "", 8, "Telefono", 30, "123", ETipoLlamada.Internacional);
-            Cliente cl9 = new Cliente("9", "Dos", "", 9, "Telefono", 30, "345", ETipoLlamada.largaDistancia);
-            Cliente cl10 = new Cliente("10", "Tres", "", 10, "Telefono", 60, "567", ETipoLlamada.local);
-            Cliente cl11 = new Cliente("11", "Cuatro", "", 11, "Computadora", 90);
-            Cliente cl12 = new Cliente("12", "Cinco", "", 12, "Computadora", 30);
-            Cliente cl13 = new Cliente("13", "Seis", "", 13, "Computadora", 120);
-            Cliente cl14= new Cliente("14", "Siete", "", 14, "Computadora", 220);
+            Cliente cl1 = new Cliente("1", "Uno", "Uno", 1,"Telefono", 30, "123", ETipoLlamada.Internacional);
+            Cliente cl2 = new Cliente("2", "Dos", "Dos", 2, "Telefono", 30, "345", ETipoLlamada.largaDistancia);
+            Cliente cl3 = new Cliente("3", "Tres", "Tres", 3, "Telefono", 60, "567", ETipoLlamada.local);
+            Cliente cl4 = new Cliente("4", "Cuatro", "Cuatro", 4, "Computadora", 90);
+            Cliente cl5 = new Cliente("5", "Cinco", "Cinco", 5, "Computadora", 30);
+            Cliente cl6 = new Cliente("6", "Seis", "Seis", 6, "Computadora", 120);
+            Cliente cl7 = new Cliente("7", "Siete", "Siete", 7 ,"Computadora", 220);
+            Cliente cl8 = new Cliente("8", "Uno", "Uno", 8, "Telefono", 30, "123", ETipoLlamada.Internacional);
+            Cliente cl9 = new Cliente("9", "Dos", "Dos", 9, "Telefono", 30, "345", ETipoLlamada.largaDistancia);
+            Cliente cl10 = new Cliente("10", "Tres", "Tres", 10, "Telefono", 60, "567", ETipoLlamada.local);
+            Cliente cl11 = new Cliente("11", "Cuatro", "Cuatro", 11, "Computadora", 90);
+            Cliente cl12 = new Cliente("12", "Cinco", "Cinco", 12, "Computadora", 30);
+            Cliente cl13 = new Cliente("13", "Seis", "Seis", 13, "Computadora", 120);
+            Cliente cl14= new Cliente("14", "Siete", "Siete", 14, "Computadora", 220);
 
             AgregarALista(cl1);
             AgregarALista(cl2);

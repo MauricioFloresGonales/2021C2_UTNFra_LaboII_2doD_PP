@@ -85,7 +85,10 @@ namespace Entidades
             sb.Append($" {this.Edad} -");
             sb.Append($" {this.Servicio} -");
             sb.Append($" {this.Minutos} -");
-            sb.Append($" {this.NumeroALlamar} -");
+            if (this.NumeroALlamar != null)
+            {
+                sb.Append($" {this.NumeroALlamar} -");
+            }
             sb.Append($" {this.TipoDeLlamada}");
             return sb.ToString();
         }

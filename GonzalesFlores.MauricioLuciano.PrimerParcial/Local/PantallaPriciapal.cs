@@ -79,14 +79,15 @@ namespace Local
         #region ListBox
         void RecibirClientes()
         {
-            this.lisBoxClientes.Items.Clear();
+            this.lisBoxClientesPCs.Items.Clear();
             foreach (Cliente item in Cibercafe.FilaDeClientesPC)
             {
-                this.lisBoxClientes.Items.Add(item.Mostrar());
+                this.lisBoxClientesPCs.Items.Add(item.Mostrar());
             }
+            this.lisBoxClientesTelefono.Items.Clear();
             foreach (Cliente item in Cibercafe.FilaDeClientesTel)
             {
-                this.lisBoxClientes.Items.Add(item.Mostrar());
+                this.lisBoxClientesTelefono.Items.Add(item.Mostrar());
             }
         }
         #endregion
