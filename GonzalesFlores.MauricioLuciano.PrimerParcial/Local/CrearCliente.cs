@@ -35,7 +35,10 @@ namespace Local
         {
             Cibercafe.AgregarALista(
                 new Cliente(
+                        this.txtDni.Text,
                         this.txtNombre.Text,
+                        this.txtApellido.Text,
+                        (int)this.nudEdad.Value,
                         cmbServicios.Text,
                         (int)nudMinutos.Value
                     )

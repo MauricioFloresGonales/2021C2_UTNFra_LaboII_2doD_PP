@@ -126,6 +126,20 @@ namespace Entidades
                     return string.Concat("011 ", numero);
             }
         }
+        public static bool Liberar(List<Telefono> listaTelefonos, string idTel)
+        {
+            foreach (Telefono item in listaTelefonos)
+            {
+                if (item.Identificador == idTel)
+                {
+                    item.activo = false;
+                    item.minutos = 0;
+                    item.CostoDeUso = 0;
+                    return true;
+                }
+            }
+            return false;
+        }
         #endregion
 
         #region Override
@@ -151,6 +165,16 @@ namespace Entidades
             if (codigo[0] == 'T')
                 return true;
             return false;
+        }
+        public static bool operator +(Telefono tel, int minutos)
+        {
+            if (!object.ReferenceEquals(tel, null))
+            {
+                tel.activo = true;
+                tel.minutos = minutos;
+                return tel.activo;
+            }
+            throw new Exception("El objeto Telefono es nulo");
         }
         #endregion
     }

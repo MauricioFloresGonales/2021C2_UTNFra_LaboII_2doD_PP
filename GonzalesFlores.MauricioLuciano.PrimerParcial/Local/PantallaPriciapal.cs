@@ -11,6 +11,7 @@ using Entidades;
 
 namespace Local
 {
+    // Setear las pcs y telefonos con sus identificadores en el name del objeto
     public partial class PantallaPriciapal : Form
     {
         public PantallaPriciapal()
@@ -22,6 +23,8 @@ namespace Local
         private void PantallaPriciapal_Load(object sender, EventArgs e)
         {
             Cibercafe.HardcodeoDedatos();
+            this.SetPCs();
+            this.SetTelefonos();
             this.cargarDataGridView();
             this.RecibirClientes();
             this.tsmInformacion.ToolTipText = "Contar con una barra de información de la aplicación donde" +
@@ -58,7 +61,7 @@ namespace Local
                     item.Identificador,
                     string.Concat("$",item.CostoDeUso),
                     item.minutos,
-                    item.activo,
+                    item.Activo,
                     item.Maquina);
             }
             foreach (Telefono item in Cibercafe.ListaDeTelefonos)
@@ -67,7 +70,7 @@ namespace Local
                     item.Identificador,
                     string.Concat("$", item.CostoDeUso),
                     item.minutos,
-                    item.activo,
+                    item.Activo,
                     item.Marca);
             }
         }
@@ -89,12 +92,25 @@ namespace Local
         #endregion
 
         #region Computadoras
-        bool EnUso(int index, string servicio)
+        void SetPCs ()
+        {// replicar para telefonos
+            this.btnPcUno.Tag = Cibercafe.ListaDeComputadoras.ElementAt(0).Identificador;
+            this.btnPcDos.Tag = Cibercafe.ListaDeComputadoras.ElementAt(1).Identificador;
+            this.btnPcTres.Tag = Cibercafe.ListaDeComputadoras.ElementAt(2).Identificador;
+            this.btnPcCuatro.Tag = Cibercafe.ListaDeComputadoras.ElementAt(3).Identificador;
+            this.btnPcCinco.Tag = Cibercafe.ListaDeComputadoras.ElementAt(4).Identificador;
+            this.btnPcSeis.Tag = Cibercafe.ListaDeComputadoras.ElementAt(5).Identificador;
+            this.btnPcSiete.Tag = Cibercafe.ListaDeComputadoras.ElementAt(6).Identificador;
+            this.btnPcOcho.Tag = Cibercafe.ListaDeComputadoras.ElementAt(7).Identificador;
+            this.btnPcNueve.Tag = Cibercafe.ListaDeComputadoras.ElementAt(8).Identificador;
+            this.btnPcDiez.Tag = Cibercafe.ListaDeComputadoras.ElementAt(9).Identificador;
+        }
+        bool EnUso(string id, string servicio)
         {
             Cliente cliente = Cibercafe.RetirarCliente(servicio);
             if (cliente.Servicio == servicio)
             {
-                return Cibercafe.ElejirServicio(cliente, index);
+                return Cibercafe.ElejirServicio(cliente, id);
             }
             throw new Exception("Error, en Frm.EnUso");
         }
@@ -140,79 +156,87 @@ namespace Local
         }
         private void btnPcUno_Click(object sender, EventArgs e)
         {
-            this.ValidarUso(this.btnPcUno, 0, "Computadora");
+            this.ValidarUso(this.btnPcUno, this.btnPcUno.Tag.ToString(), "Computadora");
         }
         private void btnPcDos_Click(object sender, EventArgs e)
         {
-            this.ValidarUso(this.btnPcDos, 1, "Computadora");
+            this.ValidarUso(this.btnPcDos, this.btnPcDos.Tag.ToString(), "Computadora");
         }
 
         private void btnPcTres_Click(object sender, EventArgs e)
         {
-            this.ValidarUso(this.btnPcTres, 2, "Computadora");
+            this.ValidarUso(this.btnPcTres, this.btnPcTres.Tag.ToString(), "Computadora");
         }
 
         private void btnPcCuatro_Click(object sender, EventArgs e)
         {
-            this.ValidarUso(this.btnPcCuatro, 3, "Computadora");
+            this.ValidarUso(this.btnPcCuatro, this.btnPcCuatro.Tag.ToString(), "Computadora");
         }
 
         private void btnPcCinco_Click(object sender, EventArgs e)
         {
-            this.ValidarUso(this.btnPcCinco, 4, "Computadora");
+            this.ValidarUso(this.btnPcCinco, this.btnPcCinco.Tag.ToString(), "Computadora");
         }
 
         private void btnPcSeis_Click(object sender, EventArgs e)
         {
-            this.ValidarUso(this.btnPcSeis, 5, "Computadora");
+            this.ValidarUso(this.btnPcSeis, this.btnPcSeis.Tag.ToString(), "Computadora");
         }
 
         private void btnPcSiete_Click(object sender, EventArgs e)
         {
-            this.ValidarUso(this.btnPcSiete, 6, "Computadora");
+            this.ValidarUso(this.btnPcSiete, this.btnPcSiete.Tag.ToString(), "Computadora");
         }
 
         private void btnPcOcho_Click(object sender, EventArgs e)
         {
-            this.ValidarUso(this.btnPcOcho, 7, "Computadora");
+            this.ValidarUso(this.btnPcOcho, this.btnPcOcho.Tag.ToString(), "Computadora");
         }
 
         private void btnPcNueve_Click(object sender, EventArgs e)
         {
-            this.ValidarUso(this.btnPcNueve, 8, "Computadora");
+            this.ValidarUso(this.btnPcNueve, this.btnPcNueve.Tag.ToString(), "Computadora");
         }
 
         private void btnPcDiez_Click(object sender, EventArgs e)
         {
-            this.ValidarUso(this.btnPcDiez, 9, "Computadora");
+            this.ValidarUso(this.btnPcDiez, this.btnPcDiez.Tag.ToString(), "Computadora");
         }
 
         #endregion
 
         #region Telefonos
-        void LiberarTel(int index)
+        void SetTelefonos()
+        {// replicar para telefonos
+            this.btnTelUno.Tag = Cibercafe.ListaDeTelefonos.ElementAt(0).Identificador;
+            this.btnTelDos.Tag = Cibercafe.ListaDeTelefonos.ElementAt(1).Identificador;
+            this.btnTelTres.Tag = Cibercafe.ListaDeTelefonos.ElementAt(2).Identificador;
+            this.btnTelCuatro.Tag = Cibercafe.ListaDeTelefonos.ElementAt(3).Identificador;
+            this.btnTelCinco.Tag = Cibercafe.ListaDeTelefonos.ElementAt(4).Identificador;
+        }
+        void LiberarTel(string id)
         {
-            Cibercafe.TelefonoALiberar(index);
+            Cibercafe.TelefonoALiberar(id);
         }
         private void btnTelUno_Click(object sender, EventArgs e)
         {
-            this.ValidarUso(this.btnTelUno, 0, "Telefono");
+            this.ValidarUso(this.btnTelUno, this.btnTelUno.Tag.ToString(), "Telefono");
         }
         private void btnTelDos_Click(object sender, EventArgs e)
         {
-            this.ValidarUso(this.btnTelDos, 1, "Telefono");
+            this.ValidarUso(this.btnTelDos, this.btnTelDos.Tag.ToString(), "Telefono");
         }
         private void btnTelTres_Click(object sender, EventArgs e)
         {
-            this.ValidarUso(this.btnTelTres, 2, "Telefono");
+            this.ValidarUso(this.btnTelTres, this.btnTelTres.Tag.ToString(), "Telefono");
         }
         private void btnTelCuatro_Click(object sender, EventArgs e)
         {
-            this.ValidarUso(this.btnTelCuatro, 3, "Telefono");
+            this.ValidarUso(this.btnTelCuatro, this.btnTelCuatro.Tag.ToString(), "Telefono");
         }
         private void btnTelCinco_Click(object sender, EventArgs e)
         {
-            this.ValidarUso(this.btnTelCinco, 4, "Telefono");
+            this.ValidarUso(this.btnTelCinco, this.btnTelCinco.Tag.ToString(), "Telefono");
         }
         #endregion
 

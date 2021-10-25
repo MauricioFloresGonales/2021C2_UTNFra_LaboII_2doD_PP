@@ -310,17 +310,20 @@ namespace Entidades
                 throw err;
             }
         }
-        public static Telefono RecibirTel(int index)
+        public static Telefono RecibirTel(string idTel)
         {
             try
             {
                 if (listaDeTelefonos.Count >= 1)
                 {
-                    if (listaDeTelefonos.Count >= index)
+                    foreach (Telefono item in listaDeTelefonos)
                     {
-                        return listaDeTelefonos[index];
+                        if (item.Identificador == idTel)
+                        {
+                            return item;
+                        }
                     }
-                    throw new Exception("El telefono que se quiere eliminar no esta en la lista.");
+                    throw new Exception("El telefono que se quiere  no esta en la lista.");
                 }
                 throw new Exception("La lista de Telefonos esta vacia.");
             }
@@ -329,31 +332,39 @@ namespace Entidades
                 throw err;
             }
         }
-        public static bool TelefonoAUsar(Cliente cl,int index, int minutos)
+        public static bool TelefonoAUsar(Cliente cl,string id, int minutos)
         {
-            foreach (Telefono item in listaDeTelefonos)
+            try
             {
-                if (item == RecibirTel(index))
+                Telefono aux = RecibirTel(id);
+                foreach (Telefono item in listaDeTelefonos)
                 {
-                    item.activo = true;
-                    item.minutos = minutos;
-                    item.CostoDeUso = cl.Minutos;
-                    item.TipoDeLlamadaSet = cl.TipoDeLlamada;
-                    return item.activo;
+                    if (item == aux)
+                    {
+                        item.CostoDeUso = cl.Minutos;
+                        item.TipoDeLlamadaSet = cl.TipoDeLlamada;
+                        return item + minutos;
+                    }
+                }
+                throw new Exception("No hay un telefono disponible");
+            }
+            catch (Exception err)
+            {
+                throw err;
+            }
+        }
+        public static void TelefonoALiberar(string idTel)
+        {
+            try
+            {
+                if (Telefono.Liberar(listaDeTelefonos, idTel) == false)
+                {
+                    throw new Exception("No se pudo liberar el Telefono que solicitó");
                 }
             }
-            throw new Exception("No hay un telefono disponible");
-        }
-        public static void TelefonoALiberar(int index)
-        {
-            foreach (Telefono tel in listaDeTelefonos)
+            catch (Exception err)
             {
-                if (tel == RecibirTel(index))
-                {
-                    tel.activo = false;
-                    tel.minutos = 0;
-                    tel.CostoDeUso = 0;
-                }
+                throw err;
             }
         }
         #endregion
