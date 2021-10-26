@@ -11,7 +11,6 @@ using Entidades;
 
 namespace Local
 {
-    // Setear las pcs y telefonos con sus identificadores en el name del objeto
     public partial class PantallaPriciapal : Form
     {
         public PantallaPriciapal()
@@ -27,9 +26,11 @@ namespace Local
             this.SetTelefonos();
             this.cargarDataGridView();
             this.RecibirClientes();
-            this.tsmInformacion.ToolTipText = "Contar con una barra de información de la aplicación donde" +
-                "figure el nombre del operador conectado (que deberá ser TU nombre) " +
-                "y la fecha actual (sin la hora).";
+            this.tsmInformacion.ToolTipText = "el pibe que atiende el ciber " + DateTime.Now.ToString("MM/dd/yyyy");
+        }
+        private void tsmInformacion_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Usuario: el pibe que atiende el ciber \n" + "Fecha: " + DateTime.Now.ToString("MM/dd/yyyy"), "Informacion");
         }
         #endregion
 
@@ -252,5 +253,6 @@ namespace Local
             this.RecibirClientes();
         }
         #endregion
+
     }
 }
