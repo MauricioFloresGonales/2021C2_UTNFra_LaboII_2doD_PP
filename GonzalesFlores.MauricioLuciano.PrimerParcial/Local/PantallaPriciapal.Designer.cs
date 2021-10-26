@@ -29,9 +29,10 @@ namespace Local
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle40 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle41 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle42 = new System.Windows.Forms.DataGridViewCellStyle();
+            this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dgvcConsola = new System.Windows.Forms.DataGridView();
             this.btnPcUno = new System.Windows.Forms.Button();
             this.btnPcDos = new System.Windows.Forms.Button();
@@ -49,16 +50,17 @@ namespace Local
             this.btnTelCuatro = new System.Windows.Forms.Button();
             this.btnTelCinco = new System.Windows.Forms.Button();
             this.grBoxTelefonos = new System.Windows.Forms.GroupBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.lisBoxClientesTelefono = new System.Windows.Forms.ListBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.lisBoxClientesPCs = new System.Windows.Forms.ListBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.lisBoxClientesPCs = new System.Windows.Forms.ListBox();
             this.btnAgregarCliente = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.tsmOpciones = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmInformacion = new System.Windows.Forms.ToolStripMenuItem();
-            this.lisBoxClientesTelefono = new System.Windows.Forms.ListBox();
-            this.label2 = new System.Windows.Forms.Label();
+            this.toolTipPC1 = new System.Windows.Forms.ToolTip(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dgvcConsola)).BeginInit();
             this.grBoxTelefonos.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -68,35 +70,35 @@ namespace Local
             // dgvcConsola
             // 
             this.dgvcConsola.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridViewCellStyle40.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle40.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle40.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle40.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle40.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle40.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle40.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvcConsola.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle40;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvcConsola.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.dgvcConsola.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle41.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle41.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle41.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle41.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle41.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle41.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle41.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvcConsola.DefaultCellStyle = dataGridViewCellStyle41;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvcConsola.DefaultCellStyle = dataGridViewCellStyle5;
             this.dgvcConsola.GridColor = System.Drawing.SystemColors.Control;
             this.dgvcConsola.Location = new System.Drawing.Point(12, 28);
             this.dgvcConsola.Name = "dgvcConsola";
             this.dgvcConsola.ReadOnly = true;
-            dataGridViewCellStyle42.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle42.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle42.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle42.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle42.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle42.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle42.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvcConsola.RowHeadersDefaultCellStyle = dataGridViewCellStyle42;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvcConsola.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
             this.dgvcConsola.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.dgvcConsola.Size = new System.Drawing.Size(607, 385);
             this.dgvcConsola.TabIndex = 0;
@@ -284,6 +286,27 @@ namespace Local
             this.grBoxTelefonos.TabStop = false;
             this.grBoxTelefonos.Text = "TELEFONOS";
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))));
+            this.label2.Location = new System.Drawing.Point(613, 1);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(134, 16);
+            this.label2.TabIndex = 25;
+            this.label2.Text = "Clientes Telefono:";
+            // 
+            // lisBoxClientesTelefono
+            // 
+            this.lisBoxClientesTelefono.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.lisBoxClientesTelefono.Font = new System.Drawing.Font("Microsoft Tai Le", 12F);
+            this.lisBoxClientesTelefono.FormattingEnabled = true;
+            this.lisBoxClientesTelefono.ItemHeight = 21;
+            this.lisBoxClientesTelefono.Location = new System.Drawing.Point(616, 20);
+            this.lisBoxClientesTelefono.Name = "lisBoxClientesTelefono";
+            this.lisBoxClientesTelefono.Size = new System.Drawing.Size(452, 109);
+            this.lisBoxClientesTelefono.TabIndex = 24;
+            // 
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.Color.Tan;
@@ -307,6 +330,16 @@ namespace Local
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "COMPUTADORAS";
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(616, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(143, 16);
+            this.label1.TabIndex = 20;
+            this.label1.Text = "Clientes en Espera:";
+            // 
             // lisBoxClientesPCs
             // 
             this.lisBoxClientesPCs.BackColor = System.Drawing.Color.Tan;
@@ -317,16 +350,6 @@ namespace Local
             this.lisBoxClientesPCs.Name = "lisBoxClientesPCs";
             this.lisBoxClientesPCs.Size = new System.Drawing.Size(449, 109);
             this.lisBoxClientesPCs.TabIndex = 18;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(616, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(143, 16);
-            this.label1.TabIndex = 20;
-            this.label1.Text = "Clientes en Espera:";
             // 
             // btnAgregarCliente
             // 
@@ -371,27 +394,6 @@ namespace Local
             this.tsmInformacion.Size = new System.Drawing.Size(180, 22);
             this.tsmInformacion.Text = "Informacion";
             this.tsmInformacion.Click += new System.EventHandler(this.tsmInformacion_Click);
-            // 
-            // lisBoxClientesTelefono
-            // 
-            this.lisBoxClientesTelefono.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.lisBoxClientesTelefono.Font = new System.Drawing.Font("Microsoft Tai Le", 12F);
-            this.lisBoxClientesTelefono.FormattingEnabled = true;
-            this.lisBoxClientesTelefono.ItemHeight = 21;
-            this.lisBoxClientesTelefono.Location = new System.Drawing.Point(616, 20);
-            this.lisBoxClientesTelefono.Name = "lisBoxClientesTelefono";
-            this.lisBoxClientesTelefono.Size = new System.Drawing.Size(452, 109);
-            this.lisBoxClientesTelefono.TabIndex = 24;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))));
-            this.label2.Location = new System.Drawing.Point(613, 1);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(134, 16);
-            this.label2.TabIndex = 25;
-            this.label2.Text = "Clientes Telefono:";
             // 
             // PantallaPriciapal
             // 
@@ -454,6 +456,7 @@ namespace Local
         private System.Windows.Forms.ToolStripMenuItem tsmInformacion;
         private System.Windows.Forms.ListBox lisBoxClientesTelefono;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.ToolTip toolTipPC1;
     }
 }
 

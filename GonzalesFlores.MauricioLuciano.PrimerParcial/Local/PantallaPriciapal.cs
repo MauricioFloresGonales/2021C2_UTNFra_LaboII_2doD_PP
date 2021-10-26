@@ -60,7 +60,7 @@ namespace Local
             {
                 this.dgvcConsola.Rows.Add(
                     item.Identificador,
-                    string.Concat("$",item.CostoDeUso),
+                    string.Concat("$", item.CostoDeUso),
                     item.minutos,
                     item.Activo,
                     item.Maquina);
@@ -94,7 +94,7 @@ namespace Local
         #endregion
 
         #region Computadoras
-        void SetPCs ()
+        void SetPCs()
         {// replicar para telefonos
             this.btnPcUno.Tag = Cibercafe.ListaDeComputadoras.ElementAt(0).Identificador;
             this.btnPcDos.Tag = Cibercafe.ListaDeComputadoras.ElementAt(1).Identificador;
@@ -106,6 +106,17 @@ namespace Local
             this.btnPcOcho.Tag = Cibercafe.ListaDeComputadoras.ElementAt(7).Identificador;
             this.btnPcNueve.Tag = Cibercafe.ListaDeComputadoras.ElementAt(8).Identificador;
             this.btnPcDiez.Tag = Cibercafe.ListaDeComputadoras.ElementAt(9).Identificador;
+
+            this.toolTipPC1.SetToolTip(this.btnPcUno, Cibercafe.RecibirPC(this.btnPcUno.Tag.ToString()).ToString());
+            this.toolTipPC1.SetToolTip(this.btnPcDos, Cibercafe.RecibirPC(this.btnPcDos.Tag.ToString()).ToString());
+            this.toolTipPC1.SetToolTip(this.btnPcTres, Cibercafe.RecibirPC(this.btnPcTres.Tag.ToString()).ToString());
+            this.toolTipPC1.SetToolTip(this.btnPcCuatro, Cibercafe.RecibirPC(this.btnPcCuatro.Tag.ToString()).ToString());
+            this.toolTipPC1.SetToolTip(this.btnPcCinco, Cibercafe.RecibirPC(this.btnPcCinco.Tag.ToString()).ToString());
+            this.toolTipPC1.SetToolTip(this.btnPcSeis, Cibercafe.RecibirPC(this.btnPcSeis.Tag.ToString()).ToString());
+            this.toolTipPC1.SetToolTip(this.btnPcSiete, Cibercafe.RecibirPC(this.btnPcSiete.Tag.ToString()).ToString());
+            this.toolTipPC1.SetToolTip(this.btnPcOcho, Cibercafe.RecibirPC(this.btnPcOcho.Tag.ToString()).ToString());
+            this.toolTipPC1.SetToolTip(this.btnPcNueve, Cibercafe.RecibirPC(this.btnPcNueve.Tag.ToString()).ToString());
+            this.toolTipPC1.SetToolTip(this.btnPcDiez, Cibercafe.RecibirPC(this.btnPcDiez.Tag.ToString()).ToString());
         }
         bool EnUso(string id, string servicio)
         {

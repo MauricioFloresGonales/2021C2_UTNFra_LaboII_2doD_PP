@@ -107,7 +107,7 @@ namespace Entidades
         private string MostrarLista(List<EJuegos> juegos)
         {
             StringBuilder sb = new StringBuilder();
-            foreach (ESoftware item in juegos)
+            foreach (EJuegos item in juegos)
             {
                 sb.Append($"{item.ToString()} ");
             }
@@ -134,28 +134,31 @@ namespace Entidades
         {
             StringBuilder sb = new StringBuilder();
 
+            sb.AppendLine("-=Software Instalado=-");
             int index = 1;
             foreach (ESoftware item in this.listaDeSorftwareIstalado)
             {
-                sb.AppendLine("Software Instalado");
-                sb.AppendLine($"{index}: {item.ToString()}");
+                sb.AppendLine($"{index}: {item}");
                 index++;
             }
+
+            sb.AppendLine("-=Lista De Perifericos=-");
             index = 1;
             foreach (ESoftware item in this.listaDePerifericos)
             {
-                sb.AppendLine("Lista De Perifericos");
-                sb.AppendLine($"{index}: {item.ToString()}");
+                sb.AppendLine($"{index}: {item}");
                 index++;
             }
+
+            sb.AppendLine("-=Lista De Juegos=-");
             index = 1;
-            foreach (ESoftware item in this.listaDeJuegos)
+            foreach (EJuegos item in this.listaDeJuegos)
             {
-                sb.AppendLine("Lista De Juegos");
-                sb.AppendLine($"{index}: {item.ToString()}");
+                sb.AppendLine($"{index}: {item}");
                 index++;
             }
-            sb.AppendLine("Hardware");
+
+            sb.AppendLine("-=Hardware=-");
             sb.AppendLine(this.Maquina);
 
             return sb.ToString();
