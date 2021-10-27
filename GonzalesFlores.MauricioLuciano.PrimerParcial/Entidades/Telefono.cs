@@ -18,6 +18,7 @@ namespace Entidades
         samsung,
     }
     public enum ETipoLlamada {
+        niguno,
         local,
         largaDistancia,
         Internacional
@@ -27,7 +28,7 @@ namespace Entidades
         ETipo tipo;
         EMarca marca;
         ETipoLlamada tipoDeLlamada;
-        // hay que replicar los cambios que se hicieron en Computadora
+        string llamandoA;
 
         #region Propiedades
         public override string Identificador
@@ -55,9 +56,11 @@ namespace Entidades
         {
             get
             {
-                StringBuilder sb = new StringBuilder();
-                sb.Append($"{this.tipoDeLlamada.ToString()}");
-                return sb.ToString();
+                if (this.tipoDeLlamada != ETipoLlamada.niguno)
+                {
+                    return this.tipoDeLlamada.ToString();
+                }
+                return " -";
             }
         }
         public string Tipo
@@ -78,12 +81,18 @@ namespace Entidades
                 return sb.ToString();
             }
         }
+        public string LlamandoA
+        {
+            get { return this.llamandoA; }
+            set { this.llamandoA = value; }
+        }
         #endregion
 
         #region Constructores
         public Telefono() : base()
         {
             base.Identificador = "T";
+            this.llamandoA = "-";
         }
         public Telefono(string identidicador, bool activo, ETipo tipo, EMarca marca) : base(activo)
         {
@@ -108,23 +117,24 @@ namespace Entidades
                     return 0;
             }
         }
-        private string MostrarTipoDeLlamada()
-        {
-            StringBuilder sb = new StringBuilder();
-            sb.Append($"{this.tipoDeLlamada.ToString()} ");
-            return sb.ToString();
-        }
         private string LlamarA(string numero)
         {
-            switch (this.TipoDeLlamadaGet)
+            if (numero != null) 
             {
-                case "largaDistancia":
-                    return string.Concat("+54 9 11 ", numero);
-                case "Internacional":
-                    return string.Concat("0609 ", numero);
-                default:
-                    return string.Concat("011 ", numero);
+                switch (this.TipoDeLlamadaGet)
+                {
+                    case "largaDistancia":
+                        return string.Concat("+54 9 11 ", numero);
+                    case "Internacional":
+                        return string.Concat("0609 ", numero);
+                    case "local":
+                        return string.Concat("011 ", numero);
+                    default:
+                        return string.Concat("\t-");
+                }
             }
+            return string.Concat("\t-");
+
         }
         public static bool Liberar(List<Telefono> listaTelefonos, string idTel)
         {
@@ -135,6 +145,8 @@ namespace Entidades
                     item.activo = false;
                     item.minutos = 0;
                     item.CostoDeUso = 0;
+                    item.tipoDeLlamada = ETipoLlamada.niguno;
+                    item.llamandoA = "-";
                     return true;
                 }
             }
@@ -147,7 +159,10 @@ namespace Entidades
         {
             StringBuilder sb = new StringBuilder();
 
+            sb.AppendLine($"Tipo Telefono: {this.Tipo}");
+            sb.AppendLine($"Marca del telefono: {this.Marca}");
             sb.AppendLine($"Tipo de Llamado: {this.TipoDeLlamadaGet}");
+            sb.AppendLine($"Llamando a: {this.LlamarA(this.LlamandoA)}");
 
             return sb.ToString();
         }

@@ -92,6 +92,15 @@ namespace Local
             }
         }
         #endregion
+        bool EnUso(string id, string servicio)
+        {
+            Cliente cliente = Cibercafe.RetirarCliente(servicio);
+            if (cliente.Servicio == servicio)
+            {
+                return Cibercafe.ElejirServicio(cliente, id);
+            }
+            throw new Exception("Error, en Frm.EnUso");
+        }
 
         #region Computadoras
         void SetPCs()
@@ -107,25 +116,16 @@ namespace Local
             this.btnPcNueve.Tag = Cibercafe.ListaDeComputadoras.ElementAt(8).Identificador;
             this.btnPcDiez.Tag = Cibercafe.ListaDeComputadoras.ElementAt(9).Identificador;
 
-            this.toolTipPC1.SetToolTip(this.btnPcUno, Cibercafe.RecibirPC(this.btnPcUno.Tag.ToString()).ToString());
-            this.toolTipPC1.SetToolTip(this.btnPcDos, Cibercafe.RecibirPC(this.btnPcDos.Tag.ToString()).ToString());
-            this.toolTipPC1.SetToolTip(this.btnPcTres, Cibercafe.RecibirPC(this.btnPcTres.Tag.ToString()).ToString());
-            this.toolTipPC1.SetToolTip(this.btnPcCuatro, Cibercafe.RecibirPC(this.btnPcCuatro.Tag.ToString()).ToString());
-            this.toolTipPC1.SetToolTip(this.btnPcCinco, Cibercafe.RecibirPC(this.btnPcCinco.Tag.ToString()).ToString());
-            this.toolTipPC1.SetToolTip(this.btnPcSeis, Cibercafe.RecibirPC(this.btnPcSeis.Tag.ToString()).ToString());
-            this.toolTipPC1.SetToolTip(this.btnPcSiete, Cibercafe.RecibirPC(this.btnPcSiete.Tag.ToString()).ToString());
-            this.toolTipPC1.SetToolTip(this.btnPcOcho, Cibercafe.RecibirPC(this.btnPcOcho.Tag.ToString()).ToString());
-            this.toolTipPC1.SetToolTip(this.btnPcNueve, Cibercafe.RecibirPC(this.btnPcNueve.Tag.ToString()).ToString());
-            this.toolTipPC1.SetToolTip(this.btnPcDiez, Cibercafe.RecibirPC(this.btnPcDiez.Tag.ToString()).ToString());
-        }
-        bool EnUso(string id, string servicio)
-        {
-            Cliente cliente = Cibercafe.RetirarCliente(servicio);
-            if (cliente.Servicio == servicio)
-            {
-                return Cibercafe.ElejirServicio(cliente, id);
-            }
-            throw new Exception("Error, en Frm.EnUso");
+            this.toolTip.SetToolTip(this.btnPcUno, Cibercafe.RecibirPC(this.btnPcUno.Tag.ToString()).ToString());
+            this.toolTip.SetToolTip(this.btnPcDos, Cibercafe.RecibirPC(this.btnPcDos.Tag.ToString()).ToString());
+            this.toolTip.SetToolTip(this.btnPcTres, Cibercafe.RecibirPC(this.btnPcTres.Tag.ToString()).ToString());
+            this.toolTip.SetToolTip(this.btnPcCuatro, Cibercafe.RecibirPC(this.btnPcCuatro.Tag.ToString()).ToString());
+            this.toolTip.SetToolTip(this.btnPcCinco, Cibercafe.RecibirPC(this.btnPcCinco.Tag.ToString()).ToString());
+            this.toolTip.SetToolTip(this.btnPcSeis, Cibercafe.RecibirPC(this.btnPcSeis.Tag.ToString()).ToString());
+            this.toolTip.SetToolTip(this.btnPcSiete, Cibercafe.RecibirPC(this.btnPcSiete.Tag.ToString()).ToString());
+            this.toolTip.SetToolTip(this.btnPcOcho, Cibercafe.RecibirPC(this.btnPcOcho.Tag.ToString()).ToString());
+            this.toolTip.SetToolTip(this.btnPcNueve, Cibercafe.RecibirPC(this.btnPcNueve.Tag.ToString()).ToString());
+            this.toolTip.SetToolTip(this.btnPcDiez, Cibercafe.RecibirPC(this.btnPcDiez.Tag.ToString()).ToString());
         }
         void ValidarUso(Button btn, string id, string servicio)
         {
@@ -219,6 +219,14 @@ namespace Local
         #endregion
 
         #region Telefonos
+        void ActualizarToolTip()
+        {
+            this.toolTip.SetToolTip(this.btnTelUno, Cibercafe.RecibirTel(this.btnTelUno.Tag.ToString()).ToString());
+            this.toolTip.SetToolTip(this.btnTelDos, Cibercafe.RecibirTel(this.btnTelDos.Tag.ToString()).ToString());
+            this.toolTip.SetToolTip(this.btnTelTres, Cibercafe.RecibirTel(this.btnTelTres.Tag.ToString()).ToString());
+            this.toolTip.SetToolTip(this.btnTelCuatro, Cibercafe.RecibirTel(this.btnTelCuatro.Tag.ToString()).ToString());
+            this.toolTip.SetToolTip(this.btnTelCinco, Cibercafe.RecibirTel(this.btnTelCinco.Tag.ToString()).ToString());
+        }
         void SetTelefonos()
         {// replicar para telefonos
             this.btnTelUno.Tag = Cibercafe.ListaDeTelefonos.ElementAt(0).Identificador;
@@ -226,6 +234,8 @@ namespace Local
             this.btnTelTres.Tag = Cibercafe.ListaDeTelefonos.ElementAt(2).Identificador;
             this.btnTelCuatro.Tag = Cibercafe.ListaDeTelefonos.ElementAt(3).Identificador;
             this.btnTelCinco.Tag = Cibercafe.ListaDeTelefonos.ElementAt(4).Identificador;
+
+            this.ActualizarToolTip();
         }
         void LiberarTel(string id)
         {
@@ -234,22 +244,27 @@ namespace Local
         private void btnTelUno_Click(object sender, EventArgs e)
         {
             this.ValidarUso(this.btnTelUno, this.btnTelUno.Tag.ToString(), "Telefono");
+            this.ActualizarToolTip();
         }
         private void btnTelDos_Click(object sender, EventArgs e)
         {
             this.ValidarUso(this.btnTelDos, this.btnTelDos.Tag.ToString(), "Telefono");
+            this.ActualizarToolTip();
         }
         private void btnTelTres_Click(object sender, EventArgs e)
         {
             this.ValidarUso(this.btnTelTres, this.btnTelTres.Tag.ToString(), "Telefono");
+            this.ActualizarToolTip();
         }
         private void btnTelCuatro_Click(object sender, EventArgs e)
         {
             this.ValidarUso(this.btnTelCuatro, this.btnTelCuatro.Tag.ToString(), "Telefono");
+            this.ActualizarToolTip();
         }
         private void btnTelCinco_Click(object sender, EventArgs e)
         {
             this.ValidarUso(this.btnTelCinco, this.btnTelCinco.Tag.ToString(), "Telefono");
+            this.ActualizarToolTip();
         }
         #endregion
 

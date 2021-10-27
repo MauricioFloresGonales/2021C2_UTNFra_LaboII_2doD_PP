@@ -343,6 +343,7 @@ namespace Entidades
                     {
                         item.CostoDeUso = cl.Minutos;
                         item.TipoDeLlamadaSet = cl.TipoDeLlamada;
+                        item.LlamandoA = cl.NumeroALlamar;
                         return item + minutos;
                     }
                 }
