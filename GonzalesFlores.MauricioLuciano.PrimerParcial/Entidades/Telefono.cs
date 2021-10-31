@@ -134,7 +134,6 @@ namespace Entidades
                 }
             }
             return string.Concat("\t-");
-
         }
         public static bool Liberar(List<Telefono> listaTelefonos, string idTel)
         {
@@ -151,6 +150,20 @@ namespace Entidades
                 }
             }
             return false;
+        }
+        public static ETipoLlamada ValidarTipoDeLlamada(string textTipoLlamada)
+        {
+            switch (textTipoLlamada)
+            {
+                case "local":
+                    return ETipoLlamada.local;
+                case "largaDistancia":
+                    return ETipoLlamada.largaDistancia;
+                case "Internacional":
+                    return ETipoLlamada.Internacional;
+                default:
+                    return ETipoLlamada.niguno;
+            }
         }
         #endregion
 

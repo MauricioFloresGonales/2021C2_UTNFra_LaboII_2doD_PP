@@ -137,25 +137,25 @@ namespace Entidades
             Cliente cl13 = new Cliente("13", "Seis", "Seis", 13, "Computadora", 120);
             Cliente cl14= new Cliente("14", "Siete", "Siete", 14, "Computadora", 220);
 
-            AgregarALista(cl1);
-            AgregarALista(cl2);
-            AgregarALista(cl3);
-            AgregarALista(cl4);
-            AgregarALista(cl5);
-            AgregarALista(cl6);
-            AgregarALista(cl7);
-            AgregarALista(cl8);
-            AgregarALista(cl9);
-            AgregarALista(cl10);
-            AgregarALista(cl11);
-            AgregarALista(cl12);
-            AgregarALista(cl13);
-            AgregarALista(cl14);
+            AgregarAFila(cl1);
+            AgregarAFila(cl2);
+            AgregarAFila(cl3);
+            AgregarAFila(cl4);
+            AgregarAFila(cl5);
+            AgregarAFila(cl6);
+            AgregarAFila(cl7);
+            AgregarAFila(cl8);
+            AgregarAFila(cl9);
+            AgregarAFila(cl10);
+            AgregarAFila(cl11);
+            AgregarAFila(cl12);
+            AgregarAFila(cl13);
+            AgregarAFila(cl14);
         }
         #endregion
 
         #region Clientes
-        public static void AgregarALista(Cliente cl)
+        public static void AgregarAFila(Cliente cl)
         {
             try
             {

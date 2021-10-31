@@ -16,6 +16,8 @@ namespace Entidades
         int minutos;
         string numerosALlamar;
         ETipoLlamada tipoLlamada;
+        Computadora pcRequerida;
+
 
         #region Propiedades
         public string Dni
@@ -72,6 +74,11 @@ namespace Entidades
         {
             this.numerosALlamar = numeroALlamar;
             this.tipoLlamada = tipo;
+        }
+
+        public Cliente(string dni, string nombre, string apellido, int edad, string servicio, int minutos, Computadora pcRequerida) : this(dni, nombre, apellido, edad, servicio, minutos)
+        {
+            this.pcRequerida = pcRequerida;
         }
         #endregion
 

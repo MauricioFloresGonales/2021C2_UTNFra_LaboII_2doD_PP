@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 namespace Entidades
 {
     public enum ESoftware {
+        ninguno,
         ofice,
         messenger,
         icq,
@@ -19,6 +20,7 @@ namespace Entidades
     }
     public enum EJuegos
     {
+        ninguno,
         CounterStrike,
         DiabloII,
         MuOnline,
@@ -74,6 +76,12 @@ namespace Entidades
         {
             base.Identificador = "C";
         }
+        public Computadora(List<ESoftware> listaDeSorftwareIstalado,  List<EJuegos> listaDeJuegos, Hardware maquina)
+        {
+            this.listaDeSorftwareIstalado = listaDeSorftwareIstalado;
+            this.listaDeJuegos = listaDeJuegos;
+            this.maquina = maquina;
+        }
         public Computadora(string identidicador,bool activo, List<ESoftware> listaDeSorftwareIstalado, List<EPerifericos> listaDePerifericos, List<EJuegos> listaDeJuegos, Hardware maquina) : base(activo)
         {
             base.Identificador = base.AgregarCodigo("C", identidicador);
@@ -126,6 +134,56 @@ namespace Entidades
                 }
             }
             return false;
+        }
+        public static ESoftware ValidarSoftware(string textSoftware)
+        {
+            switch (textSoftware)
+            {
+                case "ofice":
+                    return ESoftware.ofice;
+                case "messenger":
+                    return ESoftware.messenger;
+                case "icq":
+                    return ESoftware.icq;
+                case "ares":
+                    return ESoftware.ares;
+                default:
+                    return ESoftware.ninguno;
+            }
+        }
+        public static EPerifericos ValidarPerifericos(string textPerifericos)
+        {
+            switch (textPerifericos)
+            {
+                case "camara":
+                    return EPerifericos.camara;
+                case "auriculares":
+                    return EPerifericos.auriculares;
+                case "microfono":
+                    return EPerifericos.microfono;
+                default:
+                    throw new Exception("No se ingreso un Perifericos Valido");
+            }
+        }
+        public static EJuegos ValidarJuegos(string textJuegos)
+        {
+            switch (textJuegos)
+            {
+                case "CounterStrike":
+                    return EJuegos.CounterStrike;
+                case "DiabloII":
+                    return EJuegos.DiabloII;
+                case "MuOnline":
+                    return EJuegos.MuOnline;
+                case "LineageII":
+                    return EJuegos.LineageII;
+                case "WarcraftIII":
+                    return EJuegos.WarcraftIII;
+                case "AgeOfEmpiresII":
+                    return EJuegos.AgeOfEmpiresII;
+                default:
+                    return EJuegos.ninguno;
+            }
         }
         #endregion
 

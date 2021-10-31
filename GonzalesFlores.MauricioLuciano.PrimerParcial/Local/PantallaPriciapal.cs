@@ -91,6 +91,14 @@ namespace Local
                 this.lisBoxClientesTelefono.Items.Add(item.Mostrar());
             }
         }
+        private void lisBoxClientesPCs_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            MessageBox.Show(this.lisBoxClientesPCs.SelectedItem.ToString(), "Info Cliente");
+        }
+        private void lisBoxClientesTelefono_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            MessageBox.Show(this.lisBoxClientesTelefono.SelectedItem.ToString());
+        }
         #endregion
         bool EnUso(string id, string servicio)
         {

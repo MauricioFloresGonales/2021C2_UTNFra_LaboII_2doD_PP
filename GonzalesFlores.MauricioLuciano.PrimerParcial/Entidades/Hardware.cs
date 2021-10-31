@@ -29,7 +29,13 @@ namespace Entidades
         ERam ram;
         EPlacaGrafica placaGrafica;
 
-        public Hardware(int codigo, EProcesador procesador, ERam ram, EPlacaGrafica placaGrafica)
+        public Hardware(EProcesador procesador, ERam ram, EPlacaGrafica placaGrafica)
+        {
+            this.procesador = procesador;
+            this.ram = ram;
+            this.placaGrafica = placaGrafica;
+        }
+        public Hardware(int codigo, EProcesador procesador, ERam ram, EPlacaGrafica placaGrafica):this(procesador,ram, placaGrafica)
         {
             this.codigo = codigo;
             this.procesador = procesador;
@@ -64,6 +70,44 @@ namespace Entidades
             sb.Append($"- {this.Ram} ");
             sb.Append($"- {this.PlacaGrafica}");
             return sb.ToString();
+        }
+        public static EProcesador ValidarProcesador(string textProcesador)
+        {
+            switch (textProcesador)
+            {
+                case "intel":
+                    return EProcesador.intel;
+                case "Generico":
+                    return EProcesador.Generico;
+                default:
+                    throw new Exception("No se ingreso un Software Valido");
+            }
+        }
+        public static ERam ValidarRam(string textRam)
+        {
+            switch (textRam)
+            {
+                case "Ram100":
+                    return ERam.Ram100;
+                case "Ram200":
+                    return ERam.Ram200;
+                case "Ram300":
+                    return ERam.Ram300;
+                default:
+                    throw new Exception("No se ingreso un Software Valido");
+            }
+        }
+        public static EPlacaGrafica ValidarGrafica(string textGrafica)
+        {
+            switch (textGrafica)
+            {
+                case "integrada":
+                    return EPlacaGrafica.integrada;
+                case "gaming":
+                    return EPlacaGrafica.gaming;
+                default:
+                    throw new Exception("No se ingreso un Software Valido");
+            }
         }
         #endregion
 
