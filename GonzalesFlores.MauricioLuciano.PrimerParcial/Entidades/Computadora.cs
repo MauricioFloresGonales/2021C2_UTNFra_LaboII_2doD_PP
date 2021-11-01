@@ -121,19 +121,20 @@ namespace Entidades
             }
             return sb.ToString();
         }
-        public static bool Liberar(List<Computadora> listaPCs, string idPc)
+        public static float Liberar(List<Computadora> listaPCs, string idPc)
         {
             foreach (Computadora item in listaPCs)
             {
                 if (item.Identificador == idPc)
                 {
+                    float aux = item.CostoDeUso;
                     item.activo = false;
                     item.minutos = 0;
                     item.CostoDeUso = 0;
-                    return true;
+                    return aux;
                 }
             }
-            return false;
+            throw new Exception("No se pudo liberar la PC que solicitó");
         }
         public static ESoftware ValidarSoftware(string textSoftware)
         {
@@ -237,6 +238,14 @@ namespace Entidades
             }
             return false;
         }
+        public static bool DescendenteSegunMinutosTotales(Computadora pc1, Computadora pc2)
+        {
+            if (pc1.MinutosTotalesUsados > pc2.MinutosTotalesUsados)
+            {
+
+            }
+            return false;
+        }
         #endregion
 
         #region Override
@@ -317,6 +326,7 @@ namespace Entidades
                 pc.activo = true;
                 pc.minutos = minutos;
                 pc.CostoDeUso = minutos;
+                pc.SumarUso(pc.CostoDeUso, minutos);
                 return pc.Activo;
             }
             throw new Exception("El objeto PC es nulo");

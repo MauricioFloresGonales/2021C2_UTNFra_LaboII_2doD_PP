@@ -12,6 +12,8 @@ namespace Entidades
         float costoDeUso;
         public int minutos;
         protected bool activo;
+        float gananciasPercibidas;
+        int minutosTotalesUsados;
 
         #region Propiedades
         public virtual string Identificador
@@ -28,6 +30,16 @@ namespace Entidades
         {
             get { return this.activo; }
         }
+        public float GananciasPercibidas
+        {
+            get { return this.gananciasPercibidas; }
+            set { this.gananciasPercibidas += value; }
+        }
+        public int MinutosTotalesUsados
+        {
+            get { return this.minutosTotalesUsados; }
+            set { this.minutosTotalesUsados += value; }
+        }
         #endregion
 
         #region Constructores
@@ -37,6 +49,8 @@ namespace Entidades
             this.costoDeUso = 0;
             this.minutos = 0;
             this.activo = false;
+            this.gananciasPercibidas = 0;
+            this.minutosTotalesUsados = 0;
         }
         public Servicios(bool activo) : base()
         {
@@ -82,6 +96,11 @@ namespace Entidades
             sb.Append($"Indentificador: {this.minutos} ");
             sb.Append($"Indentificador: {this.activo} ");
             return sb.ToString();
+        }
+        public void SumarUso(float valor, int tiempo)
+        {
+            this.GananciasPercibidas = valor;
+            this.MinutosTotalesUsados = tiempo;
         }
         #endregion
 

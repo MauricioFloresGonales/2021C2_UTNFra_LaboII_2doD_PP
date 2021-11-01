@@ -135,21 +135,22 @@ namespace Entidades
             }
             return string.Concat("\t-");
         }
-        public static bool Liberar(List<Telefono> listaTelefonos, string idTel)
+        public static float Liberar(List<Telefono> listaTelefonos, string idTel)
         {
             foreach (Telefono item in listaTelefonos)
             {
                 if (item.Identificador == idTel)
                 {
+                    float aux = item.CostoDeUso;
                     item.activo = false;
                     item.minutos = 0;
                     item.CostoDeUso = 0;
                     item.tipoDeLlamada = ETipoLlamada.niguno;
                     item.llamandoA = "-";
-                    return true;
+                    return aux;
                 }
             }
-            return false;
+            throw new Exception("No se pudo liberar el Telefono que solicitó");
         }
         public static ETipoLlamada ValidarTipoDeLlamada(string textTipoLlamada)
         {
@@ -200,6 +201,8 @@ namespace Entidades
             {
                 tel.activo = true;
                 tel.minutos = minutos;
+                tel.CostoDeUso = minutos;
+                tel.SumarUso(tel.CostoDeUso, minutos);
                 return tel.activo;
             }
             throw new Exception("El objeto Telefono es nulo");

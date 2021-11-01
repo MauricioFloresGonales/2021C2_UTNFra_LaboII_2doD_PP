@@ -288,5 +288,13 @@ namespace Local
         }
         #endregion
 
+        private void button1_Click(object sender, EventArgs e)
+        {
+            FrmEstadisticas frmEstadisticas = new FrmEstadisticas();
+            if (frmEstadisticas.ShowDialog() == DialogResult.OK)
+            {
+
+            }
+        }
     }
 }

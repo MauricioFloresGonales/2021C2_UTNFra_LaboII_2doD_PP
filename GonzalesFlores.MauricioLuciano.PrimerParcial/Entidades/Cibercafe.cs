@@ -12,6 +12,7 @@ namespace Entidades
         static List<Telefono> listaDeTelefonos;
         static Queue<Cliente> filaDeClientesPC;
         static Queue<Cliente> filaDeClientesTel;
+        static float gananciasDelDia;
 
         #region Propiedades
         public static List<Computadora> ListaDeComputadoras
@@ -29,6 +30,11 @@ namespace Entidades
         public static Queue<Cliente> FilaDeClientesTel
         {
             get { return filaDeClientesTel; }
+        }
+        public static float GananciasDelDia
+        {
+            get { return gananciasDelDia; }
+            set { gananciasDelDia = value; }
         }
         #endregion
 
@@ -286,10 +292,7 @@ namespace Entidades
         {
             try
             {
-                if (Computadora.Liberar(listaDeComputadoras, idPc) == false)
-                {
-                    throw new Exception("No se pudo liberar la PC que solicitó");
-                }
+                Cibercafe.GananciasDelDia += Computadora.Liberar(listaDeComputadoras, idPc);
             }
             catch (Exception err)
             {
@@ -373,10 +376,7 @@ namespace Entidades
         {
             try
             {
-                if (Telefono.Liberar(listaDeTelefonos, idTel) == false)
-                {
-                    throw new Exception("No se pudo liberar el Telefono que solicitó");
-                }
+                Cibercafe.GananciasDelDia += Telefono.Liberar(listaDeTelefonos, idTel);
             }
             catch (Exception err)
             {

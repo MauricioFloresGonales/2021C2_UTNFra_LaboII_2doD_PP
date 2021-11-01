@@ -52,6 +52,12 @@
     <Compile Include="CrearCliente.Designer.cs">
       <DependentUpon>CrearCliente.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmEstadisticas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmEstadisticas.Designer.cs">
+      <DependentUpon>FrmEstadisticas.cs</DependentUpon>
+    </Compile>
     <Compile Include="PantallaPriciapal.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -62,6 +68,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="CrearCliente.resx">
       <DependentUpon>CrearCliente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmEstadisticas.resx">
+      <DependentUpon>FrmEstadisticas.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PantallaPriciapal.resx">
       <DependentUpon>PantallaPriciapal.cs</DependentUpon>
