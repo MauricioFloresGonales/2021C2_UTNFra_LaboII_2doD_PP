@@ -55,6 +55,10 @@ namespace Entidades
         {
             get { return this.tipoLlamada; }
         }
+        public Computadora PcRequerida
+        {
+            get { return this.pcRequerida; }
+        }
         #endregion
 
         #region Constructores
@@ -83,6 +87,14 @@ namespace Entidades
         #endregion
 
         #region Metodos
+        public static Cliente PrimerCliente(Queue<Cliente> filaDeClientes)
+        {
+            if (filaDeClientes != null)
+            {
+                return filaDeClientes.First();
+            }
+            throw new Exception("La lista de clientes es nula");
+        }
         public string Mostrar()
         {
             StringBuilder sb = new StringBuilder();
@@ -108,10 +120,5 @@ namespace Entidades
             return filaClientes;
         }
         #endregion
-
-
-
-
-
     }
 }

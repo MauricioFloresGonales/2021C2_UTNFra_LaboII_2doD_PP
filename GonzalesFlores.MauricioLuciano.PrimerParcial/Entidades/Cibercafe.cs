@@ -59,6 +59,8 @@ namespace Entidades
             soft2.Add(ESoftware.ofice);
             soft2.Add(ESoftware.messenger);
             soft2.Add(ESoftware.icq);
+            List<ESoftware> soft3 = new List<ESoftware>();
+            soft3.Add(ESoftware.ofice);
 
             List<EPerifericos> peri1 = new List<EPerifericos>();
             peri1.Add(EPerifericos.auriculares);
@@ -87,17 +89,19 @@ namespace Entidades
             juegos3.Add(EJuegos.LineageII);
             juegos3.Add(EJuegos.DiabloII);
             juegos3.Add(EJuegos.CounterStrike);
+            List<EJuegos> juegos4 = new List<EJuegos>();
+            juegos4.Add(EJuegos.MuOnline);
 
-            Computadora pc1 = new Computadora("1", false, soft1, peri1, juegos1, hw1);
-            Computadora pc2 = new Computadora("2", false, soft1, peri1, juegos1, hw1);
-            Computadora pc3 = new Computadora("3", false, soft1, peri1, juegos1, hw1);
-            Computadora pc4 = new Computadora("4", false, soft1, peri1, juegos1, hw1);
-            Computadora pc5 = new Computadora("5", false, soft1, peri1, juegos1, hw1);
-            Computadora pc6 = new Computadora("6", false, soft1, peri1, juegos1, hw1);
-            Computadora pc7 = new Computadora("7", false, soft1, peri1, juegos1, hw1);
-            Computadora pc8 = new Computadora("8", false, soft1, peri1, juegos1, hw1);
-            Computadora pc9 = new Computadora("9", false, soft1, peri1, juegos1, hw1);
-            Computadora pc10 = new Computadora("10", false, soft1, peri1, juegos1, hw1);
+            Computadora pc1 = new Computadora("1", false, soft3, peri1, juegos4, hw4);
+            Computadora pc2 = new Computadora("2", false, soft2, peri3, juegos1, hw1);
+            Computadora pc3 = new Computadora("3", false, soft1, peri1, juegos2, hw2);
+            Computadora pc4 = new Computadora("4", false, soft2, peri2, juegos2, hw1);
+            Computadora pc5 = new Computadora("5", false, soft2, peri1, juegos1, hw1);
+            Computadora pc6 = new Computadora("6", false, soft1, peri2, juegos1, hw2);
+            Computadora pc7 = new Computadora("7", false, soft2, peri3, juegos1, hw4);
+            Computadora pc8 = new Computadora("8", false, soft1, peri3, juegos2, hw3);
+            Computadora pc9 = new Computadora("9", false, soft2, peri1, juegos3, hw4);
+            Computadora pc10 = new Computadora("10", false, soft1, peri3, juegos3, hw3);
 
             listaDeComputadoras+=pc1;
             listaDeComputadoras+=pc2;
@@ -125,17 +129,17 @@ namespace Entidades
             Cliente cl1 = new Cliente("1", "Uno", "Uno", 1,"Telefono", 30, "123", ETipoLlamada.Internacional);
             Cliente cl2 = new Cliente("2", "Dos", "Dos", 2, "Telefono", 30, "345", ETipoLlamada.largaDistancia);
             Cliente cl3 = new Cliente("3", "Tres", "Tres", 3, "Telefono", 60, "567", ETipoLlamada.local);
-            Cliente cl4 = new Cliente("4", "Cuatro", "Cuatro", 4, "Computadora", 90);
-            Cliente cl5 = new Cliente("5", "Cinco", "Cinco", 5, "Computadora", 30);
-            Cliente cl6 = new Cliente("6", "Seis", "Seis", 6, "Computadora", 120);
-            Cliente cl7 = new Cliente("7", "Siete", "Siete", 7 ,"Computadora", 220);
+            Cliente cl4 = new Cliente("4", "Cuatro", "Cuatro", 4, "Computadora", 90, new Computadora(new List<ESoftware> {ESoftware.messenger}, new List<EJuegos> { EJuegos.ninguno }, new Hardware(EProcesador.Generico,ERam.Ram200,EPlacaGrafica.gaming)));
+            Cliente cl5 = new Cliente("5", "Cinco", "Cinco", 5, "Computadora", 30, new Computadora(new List<ESoftware> { ESoftware.icq }, new List<EJuegos> { EJuegos.MuOnline }, new Hardware(EProcesador.intel, ERam.Ram300, EPlacaGrafica.integrada)));
+            Cliente cl6 = new Cliente("6", "Seis", "Seis", 6, "Computadora", 120, new Computadora(new List<ESoftware> { ESoftware.messenger }, new List<EJuegos> { EJuegos.DiabloII }, new Hardware(EProcesador.Generico, ERam.Ram200, EPlacaGrafica.gaming)));
+            Cliente cl7 = new Cliente("7", "Siete", "Siete", 7 ,"Computadora", 220, new Computadora(new List<ESoftware> { ESoftware.ares }, new List<EJuegos> { EJuegos.WarcraftIII }, new Hardware(EProcesador.intel, ERam.Ram100, EPlacaGrafica.integrada)));
             Cliente cl8 = new Cliente("8", "Uno", "Uno", 8, "Telefono", 30, "123", ETipoLlamada.Internacional);
             Cliente cl9 = new Cliente("9", "Dos", "Dos", 9, "Telefono", 30, "345", ETipoLlamada.largaDistancia);
             Cliente cl10 = new Cliente("10", "Tres", "Tres", 10, "Telefono", 60, "567", ETipoLlamada.local);
-            Cliente cl11 = new Cliente("11", "Cuatro", "Cuatro", 11, "Computadora", 90);
-            Cliente cl12 = new Cliente("12", "Cinco", "Cinco", 12, "Computadora", 30);
-            Cliente cl13 = new Cliente("13", "Seis", "Seis", 13, "Computadora", 120);
-            Cliente cl14= new Cliente("14", "Siete", "Siete", 14, "Computadora", 220);
+            Cliente cl11 = new Cliente("11", "Cuatro", "Cuatro", 11, "Computadora", 90, new Computadora(new List<ESoftware> { ESoftware.ofice }, new List<EJuegos> { EJuegos.LineageII }, new Hardware(EProcesador.intel, ERam.Ram100, EPlacaGrafica.integrada)));
+            Cliente cl12 = new Cliente("12", "Cinco", "Cinco", 12, "Computadora", 30, new Computadora(new List<ESoftware> { ESoftware.icq }, new List<EJuegos> { EJuegos.MuOnline }, new Hardware(EProcesador.Generico, ERam.Ram100, EPlacaGrafica.gaming)));
+            Cliente cl13 = new Cliente("13", "Seis", "Seis", 13, "Computadora", 120, new Computadora(new List<ESoftware> { ESoftware.ares}, new List<EJuegos> { EJuegos.WarcraftIII }, new Hardware(EProcesador.intel, ERam.Ram200, EPlacaGrafica.integrada)));
+            Cliente cl14= new Cliente("14", "Siete", "Siete", 14, "Computadora", 220, new Computadora(new List<ESoftware> { ESoftware.ares}, new List<EJuegos> { EJuegos.AgeOfEmpiresII }, new Hardware(EProcesador.Generico, ERam.Ram300, EPlacaGrafica.gaming)));
 
             AgregarAFila(cl1);
             AgregarAFila(cl2);
@@ -155,16 +159,17 @@ namespace Entidades
         #endregion
 
         #region Clientes
-        public static void AgregarAFila(Cliente cl)
+        public static Queue<Cliente> FilaSegunServicio(string servicio)
         {
             try
             {
-                if (cl.Servicio == "Computadora")
+                if (servicio == "Computadora")
                 {
-                    filaDeClientesPC+=cl;
-                } else
+                    return filaDeClientesPC;
+                }
+                else
                 {
-                    filaDeClientesTel+=cl;
+                    return filaDeClientesTel;
                 }
             }
             catch (Exception err)
@@ -172,40 +177,36 @@ namespace Entidades
                 throw err;
             }
         }
-        public static Cliente RetirarCliente(string servicio)
+        public static void AgregarAFila(Cliente cl)
         {
             try
             {
-                if (servicio == "Computadora")
+                Queue<Cliente> auxCliente = FilaSegunServicio(cl.Servicio);
+                auxCliente += cl;
+            }
+            catch (Exception err)
+            {
+                throw err;
+            }
+        }
+        public static bool RetirarCliente(string servicio)
+        {
+            try
+            {
+                Queue<Cliente> auxCliente = FilaSegunServicio(servicio);
+                if (auxCliente != null)
                 {
-                    if (filaDeClientesPC != null)
+                    foreach (Cliente item in auxCliente)
                     {
-                        foreach (Cliente item in filaDeClientesPC)
+                        if (item.Servicio == servicio)
                         {
-                            if (item.Servicio == servicio)
-                            {
-                                return filaDeClientesPC.Dequeue();
-                            }
+                        auxCliente.Dequeue();
+                            return true;
                         }
-                        throw new Exception("El cliente que se quiere retirar de la fila no esta en la fila.");
                     }
-                    throw new Exception("La fila de clientes esta vacia.");
+                    throw new Exception("El cliente que se quiere retirar de la fila no esta en la fila.");
                 }
-                else
-                {
-                    if (filaDeClientesTel != null)
-                    {
-                        foreach (Cliente item in filaDeClientesTel)
-                        {
-                            if (item.Servicio == servicio)
-                            {
-                                return filaDeClientesTel.Dequeue();
-                            }
-                        }
-                        throw new Exception("El cliente que se quiere retirar de la fila no esta en la fila.");
-                    }
-                    throw new Exception("La fila de clientes esta vacia.");
-                }
+                throw new Exception("La fila de clientes esta vacia.");
             }
             catch (Exception err)
             {
@@ -216,11 +217,21 @@ namespace Entidades
         {
             if (cl.Servicio == "Computadora")
             {
-                return ComputadoraAUsar(idServicio, cl.Minutos);
+                if (Computadora.VerificarPosiblePc(listaDeComputadoras, cl.PcRequerida))
+                {
+                    if (ComputadoraAUsar(idServicio, cl))
+                    {
+                        return Cibercafe.RetirarCliente(cl.Servicio);
+                    }
+                }
+                throw new Exception("No hay una PC que cumpla con los requisitos del Cliente");
             }
             if (cl.Servicio == "Telefono")
             {
-                return TelefonoAUsar(cl, idServicio, cl.Minutos);
+                if (TelefonoAUsar(cl, idServicio, cl.Minutos))
+                {
+                    return Cibercafe.RetirarCliente(cl.Servicio);
+                }
             }
             throw new Exception("Error, en ElejirServicio");
         }
@@ -249,7 +260,7 @@ namespace Entidades
                 throw err;
             }
         }
-        public static bool ComputadoraAUsar(string index, int minutos)
+        public static bool ComputadoraAUsar(string index, Cliente cliente)
         {
             try
             {
@@ -257,7 +268,11 @@ namespace Entidades
                 {
                     if (item == RecibirPC(index))
                     {
-                        return item + minutos;
+                        if (Computadora.ValidarPosiblePc(item, cliente.PcRequerida))
+                        {
+                            return item + cliente.Minutos;
+                        }
+                        throw new Exception("La PC elejida no cumple con los requicitos del Cliente");
                     }
                 }
                 return false;

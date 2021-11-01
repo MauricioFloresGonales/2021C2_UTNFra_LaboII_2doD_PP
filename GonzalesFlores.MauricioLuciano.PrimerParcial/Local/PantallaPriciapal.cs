@@ -102,7 +102,7 @@ namespace Local
         #endregion
         bool EnUso(string id, string servicio)
         {
-            Cliente cliente = Cibercafe.RetirarCliente(servicio);
+            Cliente cliente = Cliente.PrimerCliente(Cibercafe.FilaSegunServicio(servicio));
             if (cliente.Servicio == servicio)
             {
                 return Cibercafe.ElejirServicio(cliente, id);

@@ -185,6 +185,58 @@ namespace Entidades
                     return EJuegos.ninguno;
             }
         }
+        public static bool VerificarPosiblePc(List<Computadora>listaPc, Computadora pcRequerida)
+        {
+            foreach (Computadora item in listaPc)
+            {
+                if (item.JuegoEnLaPc(pcRequerida))
+                {
+                    return true;
+                }
+                if (item.SoftwareEnLaPc(pcRequerida))
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+        public static bool ValidarPosiblePc(Computadora pcSeleccionada, Computadora pcRequerida)
+        {
+            if (pcSeleccionada.Activo != true)
+            {
+                if (pcSeleccionada.JuegoEnLaPc(pcRequerida))
+                {
+                    return true;
+                }
+                if (pcSeleccionada.SoftwareEnLaPc(pcRequerida))
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+        public bool JuegoEnLaPc(Computadora pc)
+        {
+            foreach (EJuegos item in this.listaDeJuegos)
+            {
+                if(item == pc.listaDeJuegos.First())
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+        public bool SoftwareEnLaPc(Computadora pc)
+        {
+            foreach (ESoftware item in this.listaDeSorftwareIstalado)
+            {
+                if (item == pc.listaDeSorftwareIstalado.First())
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
         #endregion
 
         #region Override
