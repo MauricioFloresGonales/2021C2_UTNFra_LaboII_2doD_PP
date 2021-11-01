@@ -109,6 +109,17 @@ namespace Entidades
                     throw new Exception("No se ingreso un Software Valido");
             }
         }
+
+        public override bool Equals(object obj)
+        {
+            return obj is Hardware hardware &&
+                   codigo == hardware.codigo;
+        }
+
+        public override int GetHashCode()
+        {
+            return -1967093634 + codigo.GetHashCode();
+        }
         #endregion
 
         #region Sobrecargas
