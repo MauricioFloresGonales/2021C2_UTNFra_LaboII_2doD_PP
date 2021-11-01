@@ -23,7 +23,7 @@ namespace Entidades
         largaDistancia,
         Internacional
     }
-    public class Telefono : Servicios
+    public sealed class Telefono : Servicios
     {
         ETipo tipo;
         EMarca marca;

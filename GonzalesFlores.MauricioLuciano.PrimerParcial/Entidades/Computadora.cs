@@ -28,7 +28,7 @@ namespace Entidades
         WarcraftIII,
         AgeOfEmpiresII
     }
-    public class Computadora : Servicios
+    public sealed class Computadora : Servicios
     {
         List<ESoftware> listaDeSorftwareIstalado;
         List<EPerifericos> listaDePerifericos;

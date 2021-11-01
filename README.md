@@ -19,6 +19,7 @@ y al mismo tiempo ver el estado de sus servicios de una forma simple.
 *verde: tiempo en pausa y hora de cobrar viendo los datos de la "consola" (data grid)
 El operario tiene la posibilidad de agregar usuarios rellenando un form que se adapta al servicio que quiera el cliente.
 Y por ultimo un boton de estadisticas donde podria ver una "consola" con las estadisticas que seleccionara mediante botones
+Para demostrar que se valida por lo menos que algo que el usuario solisite la PC1 es la que menso programas tiene.
 ___
 ## Diagrama de clases
 [Diagrama de clases](https://1drv.ms/u/s!AssK8mGpcoidjGmZYakbnwWau1Jy?e=u0iAGV)
